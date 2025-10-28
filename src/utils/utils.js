@@ -62,10 +62,10 @@ export function areFieldsCompatible(db, field1Type, field2Type) {
   return same || isCompatible;
 }
 
-export function getTableHeight(table) {
+export const getTableHeight = (fields) => {
   return (
-    table.fields.length * tableFieldHeight +
     tableHeaderHeight +
-    tableColorStripHeight
+    tableColorStripHeight +
+    fields.length * tableFieldHeight
   );
-}
+};

@@ -7,6 +7,7 @@ const defaultSettings = {
   showGrid: true,
   snapToGrid: false,
   showDataTypes: true,
+  showComments: true,
   mode: "light",
   autosave: true,
   showCardinality: true,

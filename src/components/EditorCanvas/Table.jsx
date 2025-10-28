@@ -49,7 +49,7 @@ export default function Table({
     [settings.mode],
   );
 
-  const height = getTableHeight(tableData);
+  const height = getTableHeight(tableData.fields);
 
   const isSelected = useMemo(() => {
     return (
@@ -358,6 +358,7 @@ export default function Table({
   function field(fieldData, index) {
     return (
       <div
+        key={fieldData.id}
         className={`${
           index === tableData.fields.length - 1
             ? ""
@@ -419,9 +420,16 @@ export default function Table({
               }));
             }}
           />
-          <span className="overflow-hidden text-ellipsis whitespace-nowrap">
-            {fieldData.name}
-          </span>
+          <div className="flex flex-row items-center gap-2 overflow-hidden">
+            <span className="overflow-hidden text-ellipsis whitespace-nowrap">
+              {fieldData.name}
+            </span>
+            {fieldData.comment && fieldData.comment.trim() !== "" && (
+              <span className="text-xs text-gray-500 italic overflow-hidden text-ellipsis whitespace-nowrap">
+                ({fieldData.comment})
+              </span>
+            )}
+          </div>
         </div>
         <div className="text-zinc-400">
           {hoveredField === index ? (

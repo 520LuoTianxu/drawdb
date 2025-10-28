@@ -57,6 +57,7 @@ const en = {
     snap_to_grid: "Snap to grid",
     show_datatype: "Show datatype",
     show_cardinality: "Show cardinality",
+    show_comments: "Show comments",
     theme: "Theme",
     light: "Light",
     dark: "Dark",

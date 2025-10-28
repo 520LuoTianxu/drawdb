@@ -50,6 +50,7 @@ const zh = {
     show_datatype: "显示数据类型",
     show_grid: "显示网格",
     show_cardinality: "显示关系",
+    show_comments: "显示注释",
     theme: "主题",
     light: "浅色",
     dark: "深色",
