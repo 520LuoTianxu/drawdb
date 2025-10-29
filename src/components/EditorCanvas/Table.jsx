@@ -447,7 +447,7 @@ export default function Table({
             <span className="overflow-hidden text-ellipsis whitespace-nowrap">
               {fieldData.name}
             </span>
-            {fieldData.comment && fieldData.comment.trim() !== "" && (
+            {settings.showComments && fieldData.comment && fieldData.comment.trim() !== "" && (
               <span className="text-xs text-gray-500 italic overflow-hidden text-ellipsis whitespace-nowrap">
                 ({fieldData.comment})
               </span>
