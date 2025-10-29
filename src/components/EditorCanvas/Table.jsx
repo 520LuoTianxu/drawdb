@@ -161,6 +161,9 @@ export default function Table({
           >
             <div className="px-3 overflow-hidden text-ellipsis whitespace-nowrap">
               {tableData.name}
+              {tableData.comment && tableData.comment.trim() !== "" && (
+                <span className="text-gray-500 ml-1">({tableData.comment})</span>
+              )}
             </div>
             <div className="hidden group-hover:block">
               <div className="flex justify-end items-center mx-2 space-x-1.5">
@@ -394,10 +397,10 @@ export default function Table({
           } flex items-center gap-2 overflow-hidden`}
         >
           <button
-            className={`shrink-0 w-[12px] h-[12px] rounded-full border-2 transition-all duration-200 hover:scale-125 ${
+            className={`shrink-0 w-[14px] h-[14px] rounded-full border-2 transition-all duration-200 hover:scale-125 cursor-pointer flex items-center justify-center ${
               hoveredField === index 
-                ? "bg-blue-500 border-blue-600 shadow-lg shadow-blue-500/50" 
-                : "bg-[#2f68adcc] border-[#2f68ad] hover:bg-blue-500 hover:border-blue-600 hover:shadow-md hover:shadow-blue-500/30"
+                ? "bg-blue-500 border-blue-600 shadow-lg shadow-blue-500/50 ring-2 ring-blue-300/50" 
+                : "bg-blue-400 border-blue-500 shadow-md shadow-blue-400/40 hover:bg-blue-500 hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/60 hover:ring-2 hover:ring-blue-300/50"
             }`}
             title="拖拽连接到其他表的字段"
             onPointerDown={(e) => {
@@ -424,7 +427,22 @@ export default function Table({
                   12,
               }));
             }}
-          />
+          >
+            <svg 
+              width="8" 
+              height="8" 
+              viewBox="0 0 8 8" 
+              fill="none" 
+              className="text-white"
+            >
+              <path 
+                d="M4 1V7M1 4H7" 
+                stroke="currentColor" 
+                strokeWidth="1.2" 
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
           <div className="flex flex-row items-center gap-2 overflow-hidden">
             <span className="overflow-hidden text-ellipsis whitespace-nowrap">
               {fieldData.name}
