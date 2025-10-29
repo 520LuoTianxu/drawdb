@@ -87,6 +87,16 @@ export default function Relationship({ data }) {
     cardinalityEndY = point2.y;
   }
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setSelectedElement((prev) => ({
+      ...prev,
+      element: ObjectType.RELATIONSHIP,
+      id: data.id,
+      open: false,
+    }));
+  };
+
   const edit = () => {
     if (!layout.sidebar) {
       setSelectedElement((prev) => ({
@@ -112,7 +122,7 @@ export default function Relationship({ data }) {
 
   return (
     <>
-      <g className="select-none group" onDoubleClick={edit}>
+      <g className="select-none group" onDoubleClick={edit} onClick={handleClick}>
         {/* invisible wider path for better hover ux */}
         <path
           d={calcPath(pathValues, settings.tableWidth)}

@@ -635,6 +635,9 @@ export default function ControlPanel({
       case ObjectType.AREA:
         deleteArea(selectedElement.id);
         break;
+      case ObjectType.RELATIONSHIP:
+        deleteRelationship(selectedElement.id);
+        break;
       default:
         break;
     }

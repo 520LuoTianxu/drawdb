@@ -394,7 +394,12 @@ export default function Table({
           } flex items-center gap-2 overflow-hidden`}
         >
           <button
-            className="shrink-0 w-[10px] h-[10px] bg-[#2f68adcc] rounded-full"
+            className={`shrink-0 w-[12px] h-[12px] rounded-full border-2 transition-all duration-200 hover:scale-125 ${
+              hoveredField === index 
+                ? "bg-blue-500 border-blue-600 shadow-lg shadow-blue-500/50" 
+                : "bg-[#2f68adcc] border-[#2f68ad] hover:bg-blue-500 hover:border-blue-600 hover:shadow-md hover:shadow-blue-500/30"
+            }`}
+            title="拖拽连接到其他表的字段"
             onPointerDown={(e) => {
               if (!e.isPrimary) return;
 

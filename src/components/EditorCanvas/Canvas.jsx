@@ -696,6 +696,12 @@ export default function Canvas() {
           className="absolute w-full h-full touch-none"
           viewBox={`${viewBox.left} ${viewBox.top} ${viewBox.width} ${viewBox.height}`}
         >
+          <defs>
+            <linearGradient id="linkingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="100%" stopColor="#ef4444" />
+            </linearGradient>
+          </defs>
           {settings.showGrid && (
             <>
               <defs>
@@ -759,12 +765,38 @@ export default function Canvas() {
             />
           ))}
           {linking && (
-            <path
-              d={`M ${linkingLine.startX} ${linkingLine.startY} L ${linkingLine.endX} ${linkingLine.endY}`}
-              stroke="red"
-              strokeDasharray="8,8"
-              className="pointer-events-none touch-none"
-            />
+            <g>
+              <path
+                d={`M ${linkingLine.startX} ${linkingLine.startY} L ${linkingLine.endX} ${linkingLine.endY}`}
+                stroke="url(#linkingGradient)"
+                strokeWidth="3"
+                strokeDasharray="8,4"
+                className="pointer-events-none touch-none"
+                style={{
+                  filter: "drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3))"
+                }}
+              />
+              <circle
+                cx={linkingLine.startX}
+                cy={linkingLine.startY}
+                r="6"
+                fill="#3b82f6"
+                className="pointer-events-none touch-none"
+                style={{
+                  filter: "drop-shadow(0 2px 4px rgba(59, 130, 246, 0.5))"
+                }}
+              />
+              <circle
+                cx={linkingLine.endX}
+                cy={linkingLine.endY}
+                r="4"
+                fill="#ef4444"
+                className="pointer-events-none touch-none animate-pulse"
+                style={{
+                  filter: "drop-shadow(0 2px 4px rgba(239, 68, 68, 0.5))"
+                }}
+              />
+            </g>
           )}
           {notes.map((n) => (
             <Note
