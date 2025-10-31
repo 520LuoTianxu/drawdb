@@ -1,0 +1,17 @@
+{
+  "name": "drawdb",
+  "version": "0.0.0",
+  "main": "index.html",
+  "window": {
+    "title": "数据库ER工具",
+    "icon": "./favicon.ico",
+    "width": 1280,
+    "height": 720,
+    "min_width": 1280,
+    "min_height": 720,
+    "toolbar": false,
+    "frame": true,
+    "fullscreen": false,
+    "resizable": true
+  }
+}

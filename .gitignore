@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+nw-out
+nw-builder
 *.local
 
 # Editor directories and files

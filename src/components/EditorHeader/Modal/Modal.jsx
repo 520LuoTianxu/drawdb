@@ -210,9 +210,56 @@ export default function Modal({
     }
   };
 
-  const createNewDiagram = (id) => {
-    const newWindow = window.open("/editor");
-    newWindow.name = "lt " + id;
+  const createNewDiagram = async (id) => {
+    // 重置当前图表状态
+    setDiagramId(0);
+    setTitle("Untitled diagram");
+    setTables([]);
+    setRelationships([]);
+    setAreas([]);
+    setNotes([]);
+    setTypes([]);
+    setEnums([]);
+    setTasks([]);
+    setUndoStack([]);
+    setRedoStack([]);
+    setTransform({
+      zoom: 1,
+      pan: { x: 0, y: 0 },
+    });
+    
+    // 如果选择了模板，加载模板数据
+    if (id !== -1) {
+      await db.templates
+        .get(id)
+        .then((template) => {
+          if (template) {
+            if (template.database) {
+              setDatabase(template.database);
+            }
+            setTitle(template.title || "Untitled diagram");
+            setTables(template.tables || []);
+            setRelationships(template.relationships || []);
+            setAreas(template.subjectAreas || []);
+            setNotes(template.notes || []);
+            setTasks(template.todos || []);
+            if (databases[database].hasTypes) {
+              setTypes(template.types || []);
+            }
+            if (databases[database].hasEnums) {
+              setEnums(template.enums || []);
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          Toast.error(t("oops_smth_went_wrong"));
+        });
+    }
+    
+    // 设置窗口名称为模板加载标识
+    window.name = id !== -1 ? "lt " + id : "";
+    setSaveState(State.SAVING);
   };
 
   const getModalOnOk = async () => {
@@ -257,7 +304,7 @@ export default function Modal({
         setModal(MODAL.NONE);
         return;
       case MODAL.NEW:
-        createNewDiagram(selectedTemplateId);
+        await createNewDiagram(selectedTemplateId);
         setModal(MODAL.NONE);
         return;
       case MODAL.LANGUAGE:

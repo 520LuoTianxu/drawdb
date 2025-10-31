@@ -5,7 +5,7 @@ import BugReport from "./pages/BugReport";
 import Templates from "./pages/Templates";
 import LandingPage from "./pages/LandingPage";
 import SettingsContextProvider from "./context/SettingsContext";
-import NotFound from "./pages/NotFound";
+import HomePage from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -13,11 +13,12 @@ export default function App() {
       <BrowserRouter>
         <RestoreScroll />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="/editor" element={<Editor />} />
           <Route path="/bug-report" element={<BugReport />} />
           <Route path="/templates" element={<Templates />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </SettingsContextProvider>

@@ -397,10 +397,10 @@ export default function Table({
           } flex items-center gap-2 overflow-hidden`}
         >
           <button
-            className={`shrink-0 w-[14px] h-[14px] rounded-full border-2 transition-all duration-200 hover:scale-125 cursor-pointer flex items-center justify-center ${
+            className={`shrink-0 w-[16px] h-[16px] rounded-full border-2 transition-colors duration-200 cursor-grab active:cursor-grabbing flex items-center justify-center ${
               hoveredField === index 
-                ? "bg-blue-500 border-blue-600 shadow-lg shadow-blue-500/50 ring-2 ring-blue-300/50" 
-                : "bg-blue-400 border-blue-500 shadow-md shadow-blue-400/40 hover:bg-blue-500 hover:border-blue-600 hover:shadow-lg hover:shadow-blue-500/60 hover:ring-2 hover:ring-blue-300/50"
+                ? "bg-blue-500 border-blue-600" 
+                : "bg-blue-400 border-blue-500 hover:bg-blue-500 hover:border-blue-600"
             }`}
             title="拖拽连接到其他表的字段"
             onPointerDown={(e) => {
@@ -429,16 +429,16 @@ export default function Table({
             }}
           >
             <svg 
-              width="8" 
-              height="8" 
-              viewBox="0 0 8 8" 
+              width="10" 
+              height="10" 
+              viewBox="0 0 10 10" 
               fill="none" 
               className="text-white"
             >
               <path 
-                d="M4 1V7M1 4H7" 
+                d="M5 1.5V8.5M1.5 5H8.5" 
                 stroke="currentColor" 
-                strokeWidth="1.2" 
+                strokeWidth="1.5" 
                 strokeLinecap="round"
               />
             </svg>

@@ -1,36 +1,35 @@
-import { socials } from "../data/socials";
+import { useNavigate } from "react-router-dom";
 
-export default function NotFound() {
+export default function HomePage() {
+  const navigate = useNavigate();
+
+  const handleStartDrawing = () => {
+    navigate("/editor");
+  };
+
   return (
-    <div className="p-3 space-y-2">
-      <p>hey there!</p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-6">
+      <div className="max-w-2xl mx-auto text-center">
+        {/* Logo and Title */}
+        <div className="mb-8">
+          <h1 className="text-6xl font-bold text-gray-800 mb-4">
+            Draw<span className="text-blue-600">DB</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            免费、简单、直观的数据库设计工具和 SQL 生成器
+          </p>
+        </div>
 
-      <p>looking for something you couldn&apos;t find?</p>
-      <p>
-        check out the{" "}
-        <a className="text-blue-600" href={socials.docs}>
-          docs
-        </a>
-        ,{" "}
-        <a className="text-blue-600" href="mailto:drawdb@outlook.com">
-          shoot us an email
-        </a>{" "}
-        or{" "}
-        <a className="text-blue-600" href={socials.discord}>
-          a message on discord
-        </a>
-      </p>
-      <br />
-      <p className="opacity-70">
-        * to create a relationship hold the blue dot of a field and drag it
-        towards the field you want to connect it to
-      </p>
-      <a
-        className="text-blue-600"
-        href={`${socials.docs}/create-diagram#relationships`}
-      >
-        see here
-      </a>
+        {/* Main CTA Button */}
+        <div>
+          <button
+            onClick={handleStartDrawing}
+            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            开始设计数据库
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

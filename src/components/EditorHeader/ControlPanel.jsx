@@ -11,6 +11,7 @@ import {
   IconEdit,
   IconShareStroked,
 } from "@douyinfe/semi-icons";
+import ToggleSwitch from "../ToggleSwitch";
 import { Link, useNavigate } from "react-router-dom";
 import icon from "../../assets/icon_dark_64.png";
 import {
@@ -845,30 +846,30 @@ export default function ControlPanel({
         shortcut: "Ctrl+S",
         disabled: layout.readOnly,
       },
-      save_as: {
-        function: saveDiagramAs,
-        shortcut: "Ctrl+Shift+S",
-        disabled: layout.readOnly,
-      },
-      save_as_template: {
-        function: () => {
-          db.templates
-            .add({
-              title: title,
-              tables: tables,
-              database: database,
-              relationships: relationships,
-              notes: notes,
-              subjectAreas: areas,
-              custom: 1,
-              ...(databases[database].hasEnums && { enums: enums }),
-              ...(databases[database].hasTypes && { types: types }),
-            })
-            .then(() => {
-              Toast.success(t("template_saved"));
-            });
-        },
-      },
+      // save_as: {
+      //   function: saveDiagramAs,
+      //   shortcut: "Ctrl+Shift+S",
+      //   disabled: layout.readOnly,
+      // },
+      // save_as_template: {
+      //   function: () => {
+      //     db.templates
+      //       .add({
+      //         title: title,
+      //         tables: tables,
+      //         database: database,
+      //         relationships: relationships,
+      //         notes: notes,
+      //         subjectAreas: areas,
+      //         custom: 1,
+      //         ...(databases[database].hasEnums && { enums: enums }),
+      //         ...(databases[database].hasTypes && { types: types }),
+      //       })
+      //       .then(() => {
+      //         Toast.success(t("template_saved"));
+      //       });
+      //   },
+      // },
       rename: {
         function: () => {
           setModal(MODAL.RENAME);
@@ -1342,47 +1343,27 @@ export default function ControlPanel({
     },
     view: {
       header: {
-        state: layout.header ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={layout.header} size="sm" />,
         function: () =>
           setLayout((prev) => ({ ...prev, header: !prev.header })),
       },
       sidebar: {
-        state: layout.sidebar ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={layout.sidebar} size="sm" />,
         function: () =>
           setLayout((prev) => ({ ...prev, sidebar: !prev.sidebar })),
       },
       issues: {
-        state: layout.issues ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={layout.issues} size="sm" />,
         function: () =>
           setLayout((prev) => ({ ...prev, issues: !prev.issues })),
       },
       dbml_view: {
-        state: layout.dbmlEditor ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={layout.dbmlEditor} size="sm" />,
         function: toggleDBMLEditor,
         shortcut: "Alt+E",
       },
       strict_mode: {
-        state: settings.strictMode ? (
-          <i className="bi bi-toggle-off" />
-        ) : (
-          <i className="bi bi-toggle-on" />
-        ),
+        state: <ToggleSwitch isOn={!settings.strictMode} size="sm" />,
         function: viewStrictMode,
         shortcut: "Ctrl+Shift+M",
       },
@@ -1398,11 +1379,7 @@ export default function ControlPanel({
         },
       },
       field_details: {
-        state: settings.showFieldSummary ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showFieldSummary} size="sm" />,
         function: viewFieldSummary,
         shortcut: "Ctrl+Shift+F",
       },
@@ -1411,11 +1388,7 @@ export default function ControlPanel({
         shortcut: "Enter/Return",
       },
       show_datatype: {
-        state: settings.showDataTypes ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showDataTypes} size="sm" />,
         function: () =>
           setSettings((prev) => ({
             ...prev,
@@ -1423,11 +1396,7 @@ export default function ControlPanel({
           })),
       },
       show_comments: {
-        state: settings.showComments ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showComments} size="sm" />,
         function: () =>
           setSettings((prev) => ({
             ...prev,
@@ -1435,28 +1404,16 @@ export default function ControlPanel({
           })),
       },
       show_grid: {
-        state: settings.showGrid ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showGrid} size="sm" />,
         function: viewGrid,
         shortcut: "Ctrl+Shift+G",
       },
       snap_to_grid: {
-        state: settings.snapToGrid ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.snapToGrid} size="sm" />,
         function: snapToGrid,
       },
       show_cardinality: {
-        state: settings.showCardinality ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showCardinality} size="sm" />,
         function: () =>
           setSettings((prev) => ({
             ...prev,
@@ -1464,11 +1421,7 @@ export default function ControlPanel({
           })),
       },
       show_relationship_labels: {
-        state: settings.showRelationshipLabels ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showRelationshipLabels} size="sm" />,
         function: () =>
           setSettings((prev) => ({
             ...prev,
@@ -1476,11 +1429,7 @@ export default function ControlPanel({
           })),
       },
       show_debug_coordinates: {
-        state: settings.showDebugCoordinates ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.showDebugCoordinates} size="sm" />,
         function: () =>
           setSettings((prev) => ({
             ...prev,
@@ -1509,11 +1458,7 @@ export default function ControlPanel({
         shortcut: "Ctrl+(Down/Wheel)",
       },
       fullscreen: {
-        state: fullscreen ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={fullscreen} size="sm" />,
         function: fullscreen ? exitFullscreen : enterFullscreen,
       },
     },
@@ -1522,11 +1467,7 @@ export default function ControlPanel({
         function: () => setSidesheet(SIDESHEET.TIMELINE),
       },
       autosave: {
-        state: settings.autosave ? (
-          <i className="bi bi-toggle-on" />
-        ) : (
-          <i className="bi bi-toggle-off" />
-        ),
+        state: <ToggleSwitch isOn={settings.autosave} size="sm" />,
         function: () =>
           setSettings((prev) => ({ ...prev, autosave: !prev.autosave })),
       },

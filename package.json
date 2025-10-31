@@ -36,6 +36,8 @@
     "luxon": "^3.7.1",
     "nanoid": "^5.1.5",
     "node-sql-parser": "^5.3.13",
+    "nw": "^0.105.0",
+    "nw-builder": "^4.16.0",
     "oracle-sql-parser": "^0.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
