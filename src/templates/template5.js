@@ -7,6 +7,7 @@ export const template5 = {
       name: "accounts",
       x: 129,
       y: 92,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -80,6 +81,7 @@ export const template5 = {
       name: "customers",
       x: 384,
       y: 315,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -155,6 +157,7 @@ export const template5 = {
       name: "transactions",
       x: 431,
       y: 4,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -230,6 +233,7 @@ export const template5 = {
       name: "transfers",
       x: 112,
       y: 358,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -304,6 +308,7 @@ export const template5 = {
       name: "cards",
       x: 772,
       y: 29,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -377,6 +382,7 @@ export const template5 = {
       name: "loans",
       x: 919,
       y: 281,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -465,6 +471,7 @@ export const template5 = {
       name: "investments",
       x: 664,
       y: 395,
+      width: 200,
       fields: [
         {
           name: "id",

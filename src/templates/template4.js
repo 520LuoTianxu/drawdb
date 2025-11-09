@@ -7,6 +7,7 @@ export const template4 = {
       name: "books",
       x: 167,
       y: 88,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -80,6 +81,7 @@ export const template4 = {
       name: "genres",
       x: 78,
       y: 379,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -116,6 +118,7 @@ export const template4 = {
       name: "authors",
       x: 475,
       y: 342,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -179,6 +182,7 @@ export const template4 = {
       name: "reservations",
       x: 501,
       y: 14,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -253,6 +257,7 @@ export const template4 = {
       name: "patrons",
       x: 780,
       y: 220,
+      width: 200,
       fields: [
         {
           name: "id",

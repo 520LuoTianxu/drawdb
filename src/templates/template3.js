@@ -7,6 +7,7 @@ export const template3 = {
       name: "products",
       x: 331,
       y: 300,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -81,6 +82,7 @@ export const template3 = {
       name: "categories",
       x: 649,
       y: 391,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -117,6 +119,7 @@ export const template3 = {
       name: "orders",
       x: 756,
       y: 47,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -203,6 +206,7 @@ export const template3 = {
       name: "reviews",
       x: 33,
       y: 93,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -289,6 +293,7 @@ export const template3 = {
       name: "customers",
       x: 402,
       y: 16,
+      width: 200,
       fields: [
         {
           name: "id",

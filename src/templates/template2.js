@@ -7,6 +7,7 @@ export const template2 = {
       name: "employees",
       x: 365,
       y: 20,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -94,6 +95,7 @@ export const template2 = {
       name: "department",
       x: 41,
       y: 59,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -130,6 +132,7 @@ export const template2 = {
       name: "positions",
       x: 37,
       y: 284,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -179,6 +182,7 @@ export const template2 = {
       name: "projects",
       x: 668,
       y: 28,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -256,6 +260,7 @@ export const template2 = {
       name: "project_assignment",
       x: 684,
       y: 295,
+      width: 200,
       fields: [
         {
           name: "id",

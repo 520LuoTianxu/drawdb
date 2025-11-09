@@ -7,6 +7,7 @@ export const template1 = {
       name: "users",
       x: 114.92525,
       y: 281.2977500000002,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -83,6 +84,7 @@ export const template1 = {
       name: "blog_posts",
       x: 277.57925,
       y: 19.206750000000113,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -157,6 +159,7 @@ export const template1 = {
       name: "comments",
       x: 505.62112500000035,
       y: 341.6078750000002,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -217,6 +220,7 @@ export const template1 = {
       name: "tags",
       x: 743.2832500000009,
       y: 318.1841250000001,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -253,6 +257,7 @@ export const template1 = {
       name: "blog_tag",
       x: 812.1175000000004,
       y: 131.55062500000008,
+      width: 200,
       fields: [
         {
           name: "blog_id",

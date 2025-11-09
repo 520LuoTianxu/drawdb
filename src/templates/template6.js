@@ -7,6 +7,7 @@ export const template6 = {
       name: "students",
       x: 200,
       y: 10,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -121,6 +122,7 @@ export const template6 = {
       name: "courses",
       x: 477,
       y: 354,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -181,6 +183,7 @@ export const template6 = {
       name: "enrollment",
       x: 81,
       y: 377,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -241,6 +244,7 @@ export const template6 = {
       name: "instructors",
       x: 771,
       y: 50,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -315,6 +319,7 @@ export const template6 = {
       name: "departments",
       x: 785,
       y: 338,
+      width: 200,
       fields: [
         {
           name: "id",
@@ -363,6 +368,7 @@ export const template6 = {
       name: "major",
       x: 495,
       y: 78,
+      width: 200,
       fields: [
         {
           name: "id",
