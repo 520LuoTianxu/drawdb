@@ -1,6 +1,7 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useRef } from "react";
 import {
   Tab,
+  Action,
   ObjectType,
   tableFieldHeight,
   tableHeaderHeight,
@@ -16,7 +17,7 @@ import {
   IconUnlock,
 } from "@douyinfe/semi-icons";
 import { Popover, Tag, Button, SideSheet } from "@douyinfe/semi-ui";
-import { useLayout, useSettings, useDiagram, useSelect } from "../../hooks";
+import { useLayout, useSettings, useDiagram, useSelect, useUndoRedo, useTransform } from "../../hooks";
 import TableInfo from "../EditorSidePanel/TablesTab/TableInfo";
 import { useTranslation } from "react-i18next";
 import { dbToTypes } from "../../data/datatypes";
@@ -31,12 +32,32 @@ export default function Table({
   handleGripField,
   setLinkingLine,
 }) {
+  /**
+   * Table 组件
+   * @param {Object}   props                    - 组件参数
+   * @param {Object}   props.tableData          - 表数据对象（包含坐标、字段、颜色等）
+   * @param {Function} props.onPointerDown      - 在表体按下时触发的处理函数
+   * @param {Function} props.setHoveredTable    - 设置当前悬停的表/字段信息
+   * @param {Function} props.handleGripField    - 字段拖拽起点处理函数
+   * @param {Function} props.setLinkingLine     - 设置正在连接的线条状态
+   * @returns {JSX.Element}                     - 渲染的表组件
+   * @throws {Error}                            - 渲染或交互过程中可能抛出的错误
+   */
   const [hoveredField, setHoveredField] = useState(null);
+  // 组件级状态：是否正在调整宽度
+  const [resizing, setResizing] = useState(false);
+  // 组件级状态：是否展示左右拖动小蓝点（悬停时显示）
+  const [showResizers, setShowResizers] = useState(false);
+  // 引用：记录初始宽度与初始X坐标（用于左侧拖动同时移动X）
+  const initialWidthRef = useRef(null);
+  const initialXRef = useRef(null);
   const { database } = useDiagram();
   const { layout } = useLayout();
   const { deleteTable, deleteField, updateTable } = useDiagram();
-  const { settings } = useSettings();
+  const { settings, setSettings } = useSettings();
   const { t } = useTranslation();
+  const { setUndoStack, setRedoStack } = useUndoRedo();
+  const { transform } = useTransform();
   const {
     selectedElement,
     setSelectedElement,
@@ -131,6 +152,8 @@ export default function Table({
 
   return (
     <>
+      {/* 注意：将小蓝点放在 foreignObject 之后渲染，以确保其在视觉和交互层级上位于顶部 */}
+
       <foreignObject
         key={tableData.id}
         x={tableData.x}
@@ -139,6 +162,8 @@ export default function Table({
         height={height}
         className="group drop-shadow-lg rounded-md cursor-move"
         onPointerDown={onPointerDown}
+        onPointerEnter={() => setShowResizers(true)}
+        onPointerLeave={() => !resizing && setShowResizers(false)}
       >
         <div
           onDoubleClick={openEditor}
@@ -334,6 +359,160 @@ export default function Table({
           })}
         </div>
       </foreignObject>
+
+      {/* 左右拖动小蓝点：仅在非只读、未上锁时渲染。悬停时显示 */}
+      {!layout.readOnly && !tableData.locked && (
+        <>
+          {/** 左侧小蓝点：同时调整width与x */}
+          {(showResizers || resizing) && (
+            <circle
+              cx={tableData.x}
+              cy={tableData.y + height / 2}
+              r={4}
+              fill={settings.mode === "light" ? "#3B82F6" : "#60A5FA"}
+              stroke={settings.mode === "light" ? "#2563EB" : "#3B82F6"}
+              style={{ cursor: "ew-resize" }}
+              onPointerEnter={() => setShowResizers(true)}
+              onPointerLeave={() => !resizing && setShowResizers(false)}
+              onPointerDown={(e) => {
+                try {
+                  e.stopPropagation();
+                  initialWidthRef.current = settings.tableWidth;
+                  initialXRef.current = tableData.x;
+                  setResizing(true);
+                  console.debug("[Table] 左侧拖动开始", {
+                    width: initialWidthRef.current,
+                    x: initialXRef.current,
+                  });
+                  e.currentTarget.setPointerCapture?.(e.pointerId);
+                } catch (err) {
+                  console.error("[Table] 左侧拖动开始异常", err);
+                }
+              }}
+              onPointerMove={(e) => {
+                if (!resizing) return;
+                const delta = e.movementX / (transform?.zoom || 1);
+                const currentWidth = settings.tableWidth;
+                const MIN_TABLE_WIDTH = 180;
+                let proposedWidth = currentWidth - delta;
+                let proposedX = tableData.x + delta;
+                if (proposedWidth < MIN_TABLE_WIDTH) {
+                  const clampDelta = currentWidth - MIN_TABLE_WIDTH;
+                  proposedWidth = MIN_TABLE_WIDTH;
+                  proposedX = tableData.x + clampDelta;
+                }
+                if (
+                  proposedWidth !== settings.tableWidth ||
+                  proposedX !== tableData.x
+                ) {
+                  setSettings((prev) => ({ ...prev, tableWidth: proposedWidth }));
+                  updateTable(tableData.id, { x: proposedX });
+                }
+              }}
+              onPointerUp={(e) => {
+                if (!resizing) return;
+                setResizing(false);
+                e.stopPropagation();
+                const MIN_TABLE_WIDTH = 180;
+                const finalWidth = Math.max(MIN_TABLE_WIDTH, settings.tableWidth);
+                const finalX = tableData.x;
+                const startWidth = initialWidthRef.current;
+                const startX = initialXRef.current;
+                console.debug("[Table] 左侧拖动结束", {
+                  startWidth,
+                  startX,
+                  finalWidth,
+                  finalX,
+                });
+                if (finalWidth !== startWidth || finalX !== startX) {
+                  setUndoStack((prev) => [
+                    ...prev,
+                    {
+                      action: Action.EDIT,
+                      element: ObjectType.TABLE,
+                      component: "resize",
+                      tid: tableData.id,
+                      undo: { width: startWidth, x: startX },
+                      redo: { width: finalWidth, x: finalX },
+                      message: t("edit_table", {
+                        tableName: tableData.name,
+                        extra: "[width/x]",
+                      }),
+                    },
+                  ]);
+                  setRedoStack([]);
+                }
+              }}
+            />
+          )}
+
+          {/** 右侧小蓝点：仅调整width */}
+          {(showResizers || resizing) && (
+            <circle
+              cx={tableData.x + settings.tableWidth}
+              cy={tableData.y + height / 2}
+              r={4}
+              fill={settings.mode === "light" ? "#3B82F6" : "#60A5FA"}
+              stroke={settings.mode === "light" ? "#2563EB" : "#3B82F6"}
+              style={{ cursor: "ew-resize" }}
+              onPointerEnter={() => setShowResizers(true)}
+              onPointerLeave={() => !resizing && setShowResizers(false)}
+              onPointerDown={(e) => {
+                try {
+                  e.stopPropagation();
+                  initialWidthRef.current = settings.tableWidth;
+                  setResizing(true);
+                  console.debug("[Table] 右侧拖动开始", {
+                    width: initialWidthRef.current,
+                  });
+                  e.currentTarget.setPointerCapture?.(e.pointerId);
+                } catch (err) {
+                  console.error("[Table] 右侧拖动开始异常", err);
+                }
+              }}
+              onPointerMove={(e) => {
+                if (!resizing) return;
+                const delta = e.movementX / (transform?.zoom || 1);
+                const MIN_TABLE_WIDTH = 180;
+                const next = Math.max(MIN_TABLE_WIDTH, settings.tableWidth + delta);
+                if (next !== settings.tableWidth) {
+                  setSettings((prev) => ({ ...prev, tableWidth: next }));
+                }
+              }}
+              onPointerUp={(e) => {
+                if (!resizing) return;
+                setResizing(false);
+                e.stopPropagation();
+                const MIN_TABLE_WIDTH = 180;
+                const finalWidth = Math.max(MIN_TABLE_WIDTH, settings.tableWidth);
+                const startWidth = initialWidthRef.current;
+                console.debug("[Table] 右侧拖动结束", {
+                  startWidth,
+                  finalWidth,
+                });
+                if (finalWidth !== startWidth) {
+                  setUndoStack((prev) => [
+                    ...prev,
+                    {
+                      action: Action.EDIT,
+                      element: ObjectType.TABLE,
+                      component: "resize",
+                      tid: tableData.id,
+                      undo: { width: startWidth },
+                      redo: { width: finalWidth },
+                      message: t("edit_table", {
+                        tableName: tableData.name,
+                        extra: "[width]",
+                      }),
+                    },
+                  ]);
+                  setRedoStack([]);
+                }
+              }}
+            />
+          )}
+        </>
+      )}
       <SideSheet
         title={t("edit")}
         size="small"

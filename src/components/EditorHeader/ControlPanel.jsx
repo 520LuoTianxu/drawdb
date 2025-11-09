@@ -243,14 +243,26 @@ export default function ControlPanel({
                 : index,
             ),
           });
-        } else if (a.component === "index_delete") {
-          const updatedIndices = table.indices.slice();
-          updatedIndices.splice(a.data.id, 0, a.data);
-          updateTable(a.tid, {
-            indices: updatedIndices.map((t, i) => ({ ...t, id: i })),
-          });
+      } else if (a.component === "index_delete") {
+        const updatedIndices = table.indices.slice();
+        updatedIndices.splice(a.data.id, 0, a.data);
+        updateTable(a.tid, {
+          indices: updatedIndices.map((t, i) => ({ ...t, id: i })),
+        });
         } else if (a.component === "self") {
           updateTable(a.tid, a.undo);
+        } else if (a.component === "resize") {
+          // 撤销表宽度调整：恢复全局宽度与（如果提供）当前表的x
+          try {
+            if (typeof a.undo?.width === "number") {
+              setSettings((prev) => ({ ...prev, tableWidth: a.undo.width }));
+            }
+            if (typeof a.undo?.x === "number") {
+              updateTable(a.tid, { x: a.undo.x });
+            }
+          } catch (err) {
+            console.error("[ControlPanel] 撤销表宽度调整异常", err);
+          }
         }
       } else if (a.element === ObjectType.RELATIONSHIP) {
         updateRelationship(a.rid, a.undo);
@@ -429,6 +441,18 @@ export default function ControlPanel({
           });
         } else if (a.component === "self") {
           updateTable(a.tid, a.redo, false);
+        } else if (a.component === "resize") {
+          // 重做表宽度调整：应用全局宽度与（如果提供）当前表的x
+          try {
+            if (typeof a.redo?.width === "number") {
+              setSettings((prev) => ({ ...prev, tableWidth: a.redo.width }));
+            }
+            if (typeof a.redo?.x === "number") {
+              updateTable(a.tid, { x: a.redo.x });
+            }
+          } catch (err) {
+            console.error("[ControlPanel] 重做表宽度调整异常", err);
+          }
         }
       } else if (a.element === ObjectType.RELATIONSHIP) {
         updateRelationship(a.rid, a.redo);
