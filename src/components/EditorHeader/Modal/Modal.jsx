@@ -39,7 +39,7 @@ import New from "./New";
 import Open from "./Open";
 import Rename from "./Rename";
 import SetTableWidth from "./SetTableWidth";
-import Share from "./Share";
+
 
 const extensionToLanguage = {
   md: "markdown",
@@ -407,8 +407,7 @@ export default function Modal({
             setLanguage={setUncontrolledLanguage}
           />
         );
-      case MODAL.SHARE:
-        return <Share title={title} setModal={setModal} />;
+
       default:
         return <></>;
     }
@@ -453,9 +452,9 @@ export default function Modal({
           ((modal === MODAL.IMG || modal === MODAL.CODE) && !exportData.data) ||
           (modal === MODAL.SAVEAS && saveAsTitle === "") ||
           (modal === MODAL.IMPORT_SRC && importSource.src === ""),
-        hidden: modal === MODAL.SHARE,
+        hidden: false,
       }}
-      hasCancel={modal !== MODAL.SHARE}
+      hasCancel={true}
       cancelText={t("cancel")}
       width={getModalWidth(modal)}
       bodyStyle={{

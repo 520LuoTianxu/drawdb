@@ -4,7 +4,6 @@ import Canvas from "./EditorCanvas/Canvas";
 import { CanvasContextProvider } from "../context/CanvasContext";
 import SidePanel from "./EditorSidePanel/SidePanel";
 import { DB, State } from "../data/constants";
-import { db } from "../data/db";
 import {
   useLayout,
   useSettings,
@@ -24,12 +23,9 @@ import { IconAlertTriangle } from "@douyinfe/semi-icons";
 import { useTranslation } from "react-i18next";
 import { databases } from "../data/databases";
 import { isRtl } from "../i18n/utils/rtl";
-import { useSearchParams } from "react-router-dom";
-import { get, SHARE_FILENAME } from "../api/gists";
+import { db } from "../data/db";
 
 export const IdContext = createContext({
-  gistId: "",
-  setGistId: () => {},
   version: "",
   setVersion: () => {},
 });
@@ -38,9 +34,7 @@ const SIDEPANEL_MIN_WIDTH = 384;
 
 export default function WorkSpace() {
   const [id, setId] = useState(0);
-  const [gistId, setGistId] = useState("");
   const [version, setVersion] = useState("");
-  const [loadedFromGistId, setLoadedFromGistId] = useState("");
   const [title, setTitle] = useState("Untitled Diagram");
   const [resize, setResize] = useState(false);
   const [width, setWidth] = useState(SIDEPANEL_MIN_WIDTH);
@@ -67,7 +61,6 @@ export default function WorkSpace() {
   } = useDiagram();
   const { undoStack, redoStack, setUndoStack, setRedoStack } = useUndoRedo();
   const { t, i18n } = useTranslation();
-  let [searchParams, setSearchParams] = useSearchParams();
   const handleResize = (e) => {
     if (!resize) return;
     const w = isRtl(i18n.language) ? window.innerWidth - e.clientX : e.clientX;
@@ -80,14 +73,11 @@ export default function WorkSpace() {
     const saveAsDiagram = window.name === "" || op === "d" || op === "lt";
 
     if (saveAsDiagram) {
-      searchParams.delete("shareId");
-      setSearchParams(searchParams);
       if ((id === 0 && window.name === "") || op === "lt") {
         await db.diagrams
           .add({
             database: database,
             name: title,
-            gistId: gistId ?? "",
             lastModified: new Date(),
             tables: tables,
             references: relationships,
@@ -96,7 +86,6 @@ export default function WorkSpace() {
             todos: tasks,
             pan: transform.pan,
             zoom: transform.zoom,
-            loadedFromGistId: loadedFromGistId,
             ...(databases[database].hasEnums && { enums: enums }),
             ...(databases[database].hasTypes && { types: types }),
           })
@@ -117,10 +106,8 @@ export default function WorkSpace() {
             notes: notes,
             areas: areas,
             todos: tasks,
-            gistId: gistId ?? "",
             pan: transform.pan,
             zoom: transform.zoom,
-            loadedFromGistId: loadedFromGistId,
             ...(databases[database].hasEnums && { enums: enums }),
             ...(databases[database].hasTypes && { types: types }),
           })
@@ -153,8 +140,6 @@ export default function WorkSpace() {
         });
     }
   }, [
-    searchParams,
-    setSearchParams,
     tables,
     relationships,
     notes,
@@ -167,8 +152,6 @@ export default function WorkSpace() {
     setSaveState,
     database,
     enums,
-    gistId,
-    loadedFromGistId,
   ]);
 
   const load = useCallback(async () => {
@@ -184,8 +167,6 @@ export default function WorkSpace() {
               setDatabase(DB.GENERIC);
             }
             setId(d.id);
-            setGistId(d.gistId);
-            setLoadedFromGistId(d.loadedFromGistId);
             setTitle(d.name);
             setTables(d.tables);
             setRelationships(d.references);
@@ -221,8 +202,6 @@ export default function WorkSpace() {
               setDatabase(DB.GENERIC);
             }
             setId(diagram.id);
-            setGistId(diagram.gistId);
-            setLoadedFromGistId(diagram.loadedFromGistId);
             setTitle(diagram.name);
             setTables(diagram.tables);
             setRelationships(diagram.references);
@@ -290,50 +269,6 @@ export default function WorkSpace() {
         });
     };
 
-    const loadFromGist = async (shareId) => {
-      try {
-        const { data } = await get(shareId);
-        const parsedDiagram = JSON.parse(data.files[SHARE_FILENAME].content);
-        setUndoStack([]);
-        setRedoStack([]);
-        setGistId(shareId);
-        setLoadedFromGistId(shareId);
-        setDatabase(parsedDiagram.database);
-        setTitle(parsedDiagram.title);
-        setTables(parsedDiagram.tables);
-        setRelationships(parsedDiagram.relationships);
-        setNotes(parsedDiagram.notes);
-        setAreas(parsedDiagram.subjectAreas);
-        setTransform(parsedDiagram.transform);
-        if (databases[parsedDiagram.database].hasTypes) {
-          setTypes(parsedDiagram.types ?? []);
-        }
-        if (databases[parsedDiagram.database].hasEnums) {
-          setEnums(parsedDiagram.enums ?? []);
-        }
-      } catch (e) {
-        console.log(e);
-        setSaveState(State.FAILED_TO_LOAD);
-      }
-    };
-
-    const shareId = searchParams.get("shareId");
-    if (shareId) {
-      const existingDiagram = await db.diagrams.get({
-        loadedFromGistId: shareId,
-      });
-
-      if (existingDiagram) {
-        window.name = "d " + existingDiagram.id;
-        setId(existingDiagram.id);
-      } else {
-        window.name = "";
-        setId(0);
-      }
-      await loadFromGist(shareId);
-      return;
-    }
-
     if (window.name === "") {
       await loadLatestDiagram();
     } else {
@@ -369,7 +304,6 @@ export default function WorkSpace() {
     setEnums,
     selectedDb,
     setSaveState,
-    searchParams,
   ]);
 
   const returnToCurrentDiagram = async () => {
@@ -403,7 +337,6 @@ export default function WorkSpace() {
     tasks?.length,
     transform.zoom,
     title,
-    gistId,
     setSaveState,
   ]);
 
@@ -423,7 +356,7 @@ export default function WorkSpace() {
 
   return (
     <div className="h-full flex flex-col overflow-hidden theme">
-      <IdContext.Provider value={{ gistId, setGistId, version, setVersion }}>
+      <IdContext.Provider value={{ version, setVersion }}>
         <ControlPanel
           diagramId={id}
           setDiagramId={setId}

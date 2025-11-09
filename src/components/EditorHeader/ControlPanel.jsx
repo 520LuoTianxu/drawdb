@@ -9,13 +9,12 @@ import {
   IconUndo,
   IconRedo,
   IconEdit,
-  IconShareStroked,
+
 } from "@douyinfe/semi-icons";
 import ToggleSwitch from "../ToggleSwitch";
 import { Link, useNavigate } from "react-router-dom";
 import icon from "../../assets/icon_dark_64.png";
 import {
-  Button,
   Divider,
   Dropdown,
   InputNumber,
@@ -84,7 +83,7 @@ import { toDBML } from "../../utils/exportAs/dbml";
 import { exportSavedData } from "../../utils/exportSavedData";
 import { nanoid } from "nanoid";
 import { getTableHeight } from "../../utils/utils";
-import { deleteFromCache, STORAGE_KEY } from "../../utils/cache";
+import { STORAGE_KEY } from "../../utils/cache";
 import { useLiveQuery } from "dexie-react-hooks";
 import { DateTime } from "luxon";
 export default function ControlPanel({
@@ -131,7 +130,7 @@ export default function ControlPanel({
   const { selectedElement, setSelectedElement } = useSelect();
   const { transform, setTransform } = useTransform();
   const { t, i18n } = useTranslation();
-  const { version, gistId, setGistId } = useContext(IdContext);
+  const { version } = useContext(IdContext);
   const navigate = useNavigate();
 
   const invertLayout = (component) =>
@@ -895,7 +894,6 @@ export default function ControlPanel({
               setEnums([]);
               setUndoStack([]);
               setRedoStack([]);
-              setGistId("");
             })
             .catch(() => Toast.error(t("oops_smth_went_wrong")));
         },
@@ -1481,12 +1479,6 @@ export default function ControlPanel({
       export_saved_data: {
         function: exportSavedData,
       },
-      clear_cache: {
-        function: () => {
-          deleteFromCache(gistId);
-          Toast.success(t("cache_cleared"));
-        },
-      },
       flush_storage: {
         warning: {
           title: t("flush_storage"),
@@ -1562,17 +1554,7 @@ export default function ControlPanel({
             style={isRtl(i18n.language) ? { direction: "rtl" } : {}}
           >
             {header()}
-            {window.name.split(" ")[0] !== "t" && (
-              <Button
-                type="primary"
-                className="!text-base me-2 !pe-6 !ps-5 !py-[18px] !rounded-md"
-                size="default"
-                icon={<IconShareStroked />}
-                onClick={() => setModal(MODAL.SHARE)}
-              >
-                {t("share")}
-              </Button>
-            )}
+
           </div>
         )}
         {layout.toolbar && toolbar()}
