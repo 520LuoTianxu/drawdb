@@ -5,9 +5,7 @@ const bengali = {
 };
 
 const bn = {
-  translation: {
-    report_bug: "বাগ রিপোর্ট করুন",
-    import: "ইম্পোর্ট করুন",
+  translation: {    import: "ইম্পোর্ট করুন",
     inherits: "উত্তরাধিকার",
     merging_column_w_inherited_definition:
       "টেবিল '{{tableName}}'-এর '{{fieldName}}' কলাম উত্তরাধিকারসূত্রে একীভূত হবে",
@@ -79,9 +77,7 @@ const bn = {
     are_you_sure_flush_storage: "আপনি কি নিশ্চিত যে আপনি স্টোরেজ ফ্লাশ করতে চান? এই পদক্ষেপের ফলে আপনার সকল ডায়াগ্রাম ও কাস্টম টেমপ্লেট স্থায়ীভাবে মুছে যাবে এবং আর ফিরে পাওয়া যাবে না।",
     storage_flushed: "স্টোরেজ ফ্লাশ হয়েছে",
     help: "সাহায্য",
-    shortcuts: "শর্টকাট",
-    ask_on_discord: "ডিসকর্ডে আমাদের জিজ্ঞাসা করুন",
-    feedback: "ফিডব্যাক দিন",
+    shortcuts: "শর্টকাট",    feedback: "ফিডব্যাক দিন",
     no_changes: "কোনও পরিবর্তন নেই",
     loading: "লোড হচ্ছে...",
     last_saved: "শেষ সেভ",

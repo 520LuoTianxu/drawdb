@@ -5,9 +5,7 @@ const japanese = {
 };
 
 const jp = {
-  translation: {
-    report_bug: "バグを報告",
-    import_from: "インポート",
+  translation: {    import_from: "インポート",
     import: "インポート",
     file: "ファイル",
     new: "新規",
@@ -74,9 +72,7 @@ const jp = {
       "ストレージを消去してもよろしいですか？ これにより、すべてのダイアグラムとカスタムテンプレートが取り消し不能に削除されます。",
     storage_flushed: "ストレージが消去されました",
     help: "ヘルプ",
-    shortcuts: "ショートカット",
-    ask_on_discord: "Discordで質問する",
-    feedback: "フィードバック",
+    shortcuts: "ショートカット",    feedback: "フィードバック",
     no_changes: "変更なし",
     loading: "読み込み中...",
     last_saved: "最後の保存",

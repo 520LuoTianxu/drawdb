@@ -5,9 +5,7 @@ const gujarati = {
 };
 
 const gu = {
-  translation: {
-    report_bug: "બગ રિપોર્ટ કરો",
-    import_from: "આયાત",
+  translation: {    import_from: "આયાત",
     import: "આયાત",
     file: "ફાઇલ",
     new: "નવું",
@@ -67,9 +65,7 @@ const gu = {
       "શું તમે ખરેખર સ્ટોરેજ સાફ કરવા માંગો છો? આ તમામ ડાયાગ્રામ અને કસ્ટમ ટેમ્પલેટ્સને હટાવી નાખશે.",
     storage_flushed: "સ્ટોરેજ સાફ કરાયું",
     help: "મદદ",
-    shortcuts: "શૉર્ટકટ્સ",
-    ask_on_discord: "અમને Discord પર પૂછો",
-    feedback: "પ્રતિસાદ",
+    shortcuts: "શૉર્ટકટ્સ",    feedback: "પ્રતિસાદ",
     no_changes: "કોઈ ફેરફાર નથી",
     loading: "લોડ થઇ રહ્યું છે...",
     last_saved: "છેલ્લે સેવ કરેલું",

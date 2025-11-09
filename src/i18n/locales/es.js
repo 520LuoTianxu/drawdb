@@ -5,9 +5,7 @@ const spanish = {
 };
 
 const es = {
-  translation: {
-    report_bug: "Reportar error",
-    import: "Importar",
+  translation: {    import: "Importar",
     inherits: "Hereda",
     merging_column_w_inherited_definition:
       "La columna '{{fieldName}}' en la tabla '{{tableName}}' con definición heredada será fusionada",
@@ -81,9 +79,7 @@ const es = {
       "Estás seguro de que quieres vaciar el almacenamiento? Esta operación es irreversible.",
     storage_flushed: "Almacenamiento vaciado!",
     help: "Ayuda",
-    shortcuts: "Atajos",
-    ask_on_discord: "Pregúntanos en Discord",
-    feedback: "Retroalimentación",
+    shortcuts: "Atajos",    feedback: "Retroalimentación",
     no_changes: "Sin cambios",
     loading: "Cargando...",
     last_saved: "Último guardado",

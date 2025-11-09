@@ -5,9 +5,7 @@ const hebrew = {
 };
 
 const he = {
-  translation: {
-    report_bug: "דווח על באג",
-    import_from: "ייבוא",
+  translation: {    import_from: "ייבוא",
     import: "ייבוא",
     file: "קובץ",
     new: "חדש",
@@ -74,9 +72,7 @@ const he = {
       "האם אתה בטוח שברצונך לנקות את האחסון? פעולה זו תמחק באופן בלתי הפיך את כל הדיאגרמות והתבניות המותאמות אישית שלך.",
     storage_flushed: "אחסון נוקה",
     help: "עזרה",
-    shortcuts: "קיצורי דרך",
-    ask_on_discord: "שאל אותנו ב-Discord",
-    feedback: "משוב",
+    shortcuts: "קיצורי דרך",    feedback: "משוב",
     no_changes: "אין שינויים",
     loading: "טוען...",
     last_saved: "נשמר לאחרונה",

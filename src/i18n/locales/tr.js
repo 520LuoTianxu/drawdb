@@ -5,9 +5,7 @@ const turkish = {
 };
 
 const tr = {
-  translation: {
-    report_bug: "Hata bildir",
-    import_from: "İçe aktar",
+  translation: {    import_from: "İçe aktar",
     import: "İçe aktar",
     file: "Dosya",
     new: "Yeni",
@@ -74,9 +72,7 @@ const tr = {
       "Depoyu temizlemek istediğinizden emin misiniz? Bu işlem geri döndürülemez.",
     storage_flushed: "Depo temizlendi",
     help: "Yardım",
-    shortcuts: "Kısayollar",
-    ask_on_discord: "Discord'da sor",
-    feedback: "Geribildirim",
+    shortcuts: "Kısayollar",    feedback: "Geribildirim",
     no_changes: "Değişiklik yok",
     loading: "Yükleniyor...",
     last_saved: "Son kaydedilen",

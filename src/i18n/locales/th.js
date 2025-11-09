@@ -5,9 +5,7 @@ const thai = {
 };
 
 const th = {
-  translation: {
-    report_bug: "รายงานข้อผิดพลาด",
-    import: "นำเข้า",
+  translation: {    import: "นำเข้า",
     inherits: "สืบทอด",
     merging_column_w_inherited_definition:
       "คอลัมน์ '{{fieldName}}' ในตาราง '{{tableName}}' ที่มีคำนิยามสืบทอดจะถูกรวมเข้าด้วยกัน",
@@ -81,9 +79,7 @@ const th = {
       "คุณแน่ใจหรือไม่ว่าต้องการล้างที่เก็บข้อมูล? การดำเนินการนี้จะลบไดอะแกรมและเทมเพลตทั้งหมดอย่างถาวร",
     storage_flushed: "ล้างข้อมูลแล้ว",
     help: "ช่วยเหลือ",
-    shortcuts: "ทางลัด",
-    ask_on_discord: "ถามเราใน Discord",
-    feedback: "ข้อเสนอแนะ",
+    shortcuts: "ทางลัด",    feedback: "ข้อเสนอแนะ",
     no_changes: "ไม่มีการเปลี่ยนแปลง",
     loading: "กำลังโหลด...",
     last_saved: "บันทึกล่าสุด",

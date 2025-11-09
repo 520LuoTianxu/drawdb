@@ -5,9 +5,7 @@ const swedish = {
 };
 
 const sv = {
-  translation: {
-    report_bug: "Rapportera ett fel",
-    import_from: "Importera",
+  translation: {    import_from: "Importera",
     import: "Importera",
     file: "Fil",
     new: "Ny",
@@ -74,9 +72,7 @@ const sv = {
       "Är du säker på att du vill tömma lagringen? Detta kommer radera alla dina diagram och anpassade mallar och går inte att ångra.",
     storage_flushed: "Lagring tömd",
     help: "Hjälp",
-    shortcuts: "Kortkommandon",
-    ask_on_discord: "Fråga oss på Discord",
-    feedback: "Feedback",
+    shortcuts: "Kortkommandon",    feedback: "Feedback",
     no_changes: "Inga ändringar",
     loading: "Laddar...",
     last_saved: "Senast sparad",

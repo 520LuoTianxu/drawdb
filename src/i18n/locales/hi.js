@@ -5,9 +5,7 @@ const hindi = {
 };
 
 const hi = {
-  translation: {
-    report_bug: "बग रिपोर्ट करें",
-    import_from: "इम्पोर्ट",
+  translation: {    import_from: "इम्पोर्ट",
     import: "इम्पोर्ट",
     file: "फ़ाइल",
     new: "नया",
@@ -67,9 +65,7 @@ const hi = {
       "क्या आप वाकई स्टोरेज को साफ़ करना चाहते हैं? यह सभी आपके डायग्राम और कस्टम टेम्पलेट्स को अपरिवर्तनीय रूप से हटा देगा।",
     storage_flushed: "स्टोरेज साफ़ किया गया",
     help: "मदद",
-    shortcuts: "शॉर्टकट्स",
-    ask_on_discord: "हमसे Discord पर पूछें",
-    feedback: "फीडबॅक",
+    shortcuts: "शॉर्टकट्स",    feedback: "फीडबॅक",
     no_changes: "कोई बदलाव नहीं",
     loading: "लोड हो रहा है...",
     last_saved: "आखिरी बार सेव्हड",

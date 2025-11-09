@@ -5,9 +5,7 @@ const marathi = {
 };
 
 const mr = {
-  translation: {
-    report_bug: "बग रिपोर्ट करा",
-    import_from: "आयात",
+  translation: {    import_from: "आयात",
     import: "आयात",
     file: "फाइल",
     new: "नवीन",
@@ -67,9 +65,7 @@ const mr = {
       "आपण खरोखर स्टोरेज साफ करू इच्छिता? हे सर्व आपले डायग्राम आणि कस्टम टेम्पलेट्स अपरिवर्तनीयपणे हटवेल.",
     storage_flushed: "स्टोरेज साफ केले",
     help: "मदत",
-    shortcuts: "शॉर्टकट्स",
-    ask_on_discord: "आमच्याकडे Discord वर विचारा",
-    feedback: "प्रतिक्रिया",
+    shortcuts: "शॉर्टकट्स",    feedback: "प्रतिक्रिया",
     no_changes: "कोणतेही बदल नाहीत",
     loading: "लोड होत आहे...",
     last_saved: "शेवटचा जतन",

@@ -5,9 +5,7 @@ const indonesian = {
 };
 
 const id = {
-  translation: {
-    report_bug: "Laporkan bug",
-    import_from: "Impor",
+  translation: {    import_from: "Impor",
     import: "Impor",
     file: "Berkas",
     new: "Baru",
@@ -74,9 +72,7 @@ const id = {
       "Apakah Anda yakin ingin membersihkan penyimpanan? Ini akan menghapus semua diagram dan template kustom Anda secara permanen.",
     storage_flushed: "Penyimpanan dibersihkan",
     help: "Bantuan",
-    shortcuts: "Pintasan",
-    ask_on_discord: "Tanya kami di Discord",
-    feedback: "Umpan balik",
+    shortcuts: "Pintasan",    feedback: "Umpan balik",
     no_changes: "Tidak ada perubahan",
     loading: "Memuat...",
     last_saved: "Terakhir disimpan",

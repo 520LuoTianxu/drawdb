@@ -5,9 +5,7 @@ const portuguese = {
 };
 
 const pt = {
-  translation: {
-    report_bug: "Reportar um erro",
-    import_from: "Importar",
+  translation: {    import_from: "Importar",
     import: "Importar",
     file: "Arquivo",
     new: "Novo",
@@ -75,9 +73,7 @@ const pt = {
       "Tem certeza de que deseja limpar o armazenamento? Isso irá excluir permanentemente todos os seus diagramas e modelos personalizados.",
     storage_flushed: "Armazenamento limpo",
     help: "Ajuda",
-    shortcuts: "Atalhos",
-    ask_on_discord: "Pergunte no Discord",
-    feedback: "Feedback",
+    shortcuts: "Atalhos",    feedback: "Feedback",
     no_changes: "Sem alterações",
     loading: "Carregando...",
     last_saved: "Última vez salvo às",

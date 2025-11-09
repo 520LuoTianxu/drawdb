@@ -5,9 +5,7 @@ const french = {
 };
 
 const fr = {
-  translation: {
-    report_bug: "Signaler un bug",
-    import_from: "Importer de",
+  translation: {    import_from: "Importer de",
     import: "Importer",
     file: "Fichier",
     new: "Nouveau",
@@ -67,9 +65,7 @@ const fr = {
       "Êtes-vous sûr de vouloir vider le stockage? Cela supprimera de manière irréversible tous vos diagrammes et modèles personnalisés.",
     storage_flushed: "Stockage vidé",
     help: "Aide",
-    shortcuts: "Raccourcis",
-    ask_on_discord: "Demandez-nous sur Discord",
-    feedback: "Retour d'information",
+    shortcuts: "Raccourcis",    feedback: "Retour d'information",
     no_changes: "Aucun changement",
     loading: "Chargement...",
     last_saved: "Dernière sauvegarde",

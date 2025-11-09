@@ -5,9 +5,7 @@ const russian = {
 };
 
 const ru = {
-  translation: {
-    report_bug: "Сообщить об ошибке",
-    import_from: "Импорт",
+  translation: {    import_from: "Импорт",
     import: "Импорт",
     file: "Файл",
     new: "Новый",
@@ -67,9 +65,7 @@ const ru = {
       "Вы уверены, что хотите очистить хранилище? Это необратимо удалит все ваши диаграммы и пользовательские шаблоны.",
     storage_flushed: "Хранилище очищено",
     help: "Помощь",
-    shortcuts: "Горячие клавиши",
-    ask_on_discord: "Задайте вопрос в Discord",
-    feedback: "Обратная связь",
+    shortcuts: "Горячие клавиши",    feedback: "Обратная связь",
     no_changes: "Нет изменений",
     loading: "Загрузка...",
     last_saved: "Последнее сохранение",

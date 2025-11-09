@@ -5,9 +5,7 @@ const arabic = {
 };
 
 const ar = {
-  translation: {
-    report_bug: "الإبلاغ عن خطأ",
-    import_from: "استيراد",
+  translation: {    import_from: "استيراد",
     import: "استيراد",
     file: "ملف",
     new: "جديد",
@@ -74,9 +72,7 @@ const ar = {
       "هل أنت متأكد أنك تريد مسح التخزين؟ سيؤدي هذا إلى حذف جميع مخططاتك والقوالب المخصصة بشكل لا رجعة فيه.",
     storage_flushed: "تم مسح التخزين",
     help: "مساعدة",
-    shortcuts: "الاختصارات",
-    ask_on_discord: "اسألنا على ديسكورد",
-    feedback: "التعليقات",
+    shortcuts: "الاختصارات",    feedback: "التعليقات",
     no_changes: "لا تغييرات",
     loading: "جارٍ التحميل...",
     last_saved: "آخر حفظ",

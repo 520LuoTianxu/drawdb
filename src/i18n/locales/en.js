@@ -5,9 +5,7 @@ const english = {
 };
 
 const en = {
-  translation: {
-    report_bug: "Report a bug",
-    import: "Import",
+  translation: {    import: "Import",
     inherits: "Inherits",
     merging_column_w_inherited_definition:
       "Column '{{fieldName}}' in table '{{tableName}}' with inherited definition will be merged",
@@ -82,9 +80,7 @@ const en = {
       "Are you sure you want to flush the storage? This will irreversibly delete all your diagrams and custom templates.",
     storage_flushed: "Storage flushed",
     help: "Help",
-    shortcuts: "Shortcuts",
-    ask_on_discord: "Ask us on Discord",
-    feedback: "Feedback",
+    shortcuts: "Shortcuts",    feedback: "Feedback",
     no_changes: "No changes",
     loading: "Loading...",
     last_saved: "Last saved",

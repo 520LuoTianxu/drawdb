@@ -5,9 +5,7 @@ const ukrainian = {
 };
 
 const uk = {
-  translation: {
-    report_bug: "Повідомити про помилку",
-    import_from: "Імпортувати",
+  translation: {    import_from: "Імпортувати",
     import: "Імпортувати",
     file: "Файл",
     new: "Новий",
@@ -67,9 +65,7 @@ const uk = {
       "Ви впевнені, що хочете очистити сховище? Це незворотно видалить всі ваші діаграми та користувацькі шаблони.",
     storage_flushed: "Сховище очищено",
     help: "Допомога",
-    shortcuts: "Гарячі клавіші",
-    ask_on_discord: "Запитайте нас на Discord",
-    feedback: "Відгук",
+    shortcuts: "Гарячі клавіші",    feedback: "Відгук",
     no_changes: "Змін немає",
     loading: "Завантаження...",
     last_saved: "Останнє збереження",

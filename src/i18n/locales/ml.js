@@ -5,9 +5,7 @@ const malayalam = {
 };
 
 const ml = {
-    translation: {
-        report_bug: "ബഗ് റിപ്പോർട്ട് ചെയ്യുക",
-        import: "ഇമ്പോർട്ട്",
+    translation: {        import: "ഇമ്പോർട്ട്",
         inherits: "പാരമ്പര്യമായി ലഭിക്കുന്നു",
         merging_column_w_inherited_definition: "'{{tableName}}' ടേബിളിലെ '{{fieldName}}' കോളം പാരമ്പര്യ നിർവ്വചനത്തോട് ലയിപ്പിക്കും",
         import_from: "ഇവിടെ നിന്ന് ഇമ്പോർട്ട് ചെയ്യുക",
@@ -77,9 +75,7 @@ const ml = {
         are_you_sure_flush_storage: "സ്റ്റോറേജ് ഫ്ലഷ് ചെയ്യണമെന്ന് ഉറപ്പാണോ? ഇത് നിങ്ങളുടെ എല്ലാ ഡയഗ്രമുകളും കസ്റ്റം ടെംപ്ലേറ്റുകളും ഇല്ലാതാക്കും.",
         storage_flushed: "സ്റ്റോറേജ് ഫ്ലഷ് ചെയ്തു",
         help: "സഹായം",
-        shortcuts: "ഷോർട്ട്കട്ടുകൾ",
-        ask_on_discord: "ഡിസ്കോർഡിൽ ഞങ്ങളോട് ചോദിക്കുക",
-        feedback: "ഫീഡ്ബാക്ക്",
+        shortcuts: "ഷോർട്ട്കട്ടുകൾ",        feedback: "ഫീഡ്ബാക്ക്",
         no_changes: "മാറ്റങ്ങളൊന്നുമില്ല",
         loading: "ലോഡിംഗ്...",
         last_saved: "അവസാനം സേവ് ചെയ്തത്",

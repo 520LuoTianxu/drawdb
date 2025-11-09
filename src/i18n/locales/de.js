@@ -5,9 +5,7 @@ const german = {
 };
 
 const de = {
-  translation: {
-    report_bug: "Einen Fehler melden",
-    import: "Importieren",
+  translation: {    import: "Importieren",
     import_from: "Importieren",
     file: "Datei",
     new: "Neu",
@@ -74,9 +72,7 @@ const de = {
       "Sind Sie sicher, dass Sie den Speicher leeren wollen? Dadurch werden alle Ihre Diagramme und benutzerdefinierten Vorlagen unwiderruflich gelöscht.",
     storage_flushed: "Speicher geleert",
     help: "Hilfe",
-    shortcuts: "Tastenkürzel",
-    ask_on_discord: "Fragen Sie uns auf Discord",
-    feedback: "Feedback",
+    shortcuts: "Tastenkürzel",    feedback: "Feedback",
     no_changes: "Keine Änderungen",
     loading: "Laden...",
     last_saved: "Zuletzt gespeichert",

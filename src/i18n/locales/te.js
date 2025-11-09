@@ -5,9 +5,7 @@ const telugu = {
 };
 
 const te = {
-  translation: {
-    report_bug: "బగ్ నివేదించండి",
-    import_from: "దిగుమతి",
+  translation: {    import_from: "దిగుమతి",
     import: "దిగుమతి",
     file: "ఫైల్",
     new: "క్రొత్త",
@@ -67,9 +65,7 @@ const te = {
       "మీరు స్టోరేజ్ ఖచ్చితంగా క్లియర్ చేయాలనుకుంటున్నారా? ఇది మీ అన్ని డయాగ్రామ్‌లు మరియు కస్టమ్ టెంప్లేట్లను తిరిగి పొందలేని విధంగా తొలగిస్తుంది.",
     storage_flushed: "స్టోరేజ్ క్లియర్ చేయబడింది",
     help: "సహాయం",
-    shortcuts: "షార్ట్‌కట్లు",
-    ask_on_discord: "Discord లో అడగండి",
-    feedback: "ఫీడ్బాక్",
+    shortcuts: "షార్ట్‌కట్లు",    feedback: "ఫీడ్బాక్",
     no_changes: "ఏ మార్పులూ లేవు",
     loading: "లోడ్ అవుతోంది...",
     last_saved: "చివరిగా సేవ్ చేయబడింది",

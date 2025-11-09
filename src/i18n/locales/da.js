@@ -5,9 +5,7 @@ const danish = {
 };
 
 const da = {
-  translation: {
-    report_bug: "Rapportér en fejl",
-    import_from: "Importér",
+  translation: {    import_from: "Importér",
     import: "Importér",
     file: "Fil",
     new: "Ny",
@@ -67,9 +65,7 @@ const da = {
       "Er du sikker på at du vil tømme lagringen? Dette gør at alle dine diagrammer og individuelle skabeloner bliver slettet irreversibelt",
     storage_flushed: "Lagring tømt",
     help: "Hjælp",
-    shortcuts: "Genveje",
-    ask_on_discord: "Spørg os på Discord",
-    feedback: "Feedback",
+    shortcuts: "Genveje",    feedback: "Feedback",
     no_changes: "Ingen ændringer",
     loading: "Loader...",
     last_saved: "Sidst gemt",

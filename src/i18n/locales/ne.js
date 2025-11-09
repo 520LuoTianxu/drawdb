@@ -5,9 +5,7 @@ const nepali = {
 };
 
 const ne = {
-  translation: {
-    report_bug: "बग रिपोर्ट गर्नुहोस्",
-    import_from: "इम्पोर्ट गर्नुहोस्",
+  translation: {    import_from: "इम्पोर्ट गर्नुहोस्",
     import: "इम्पोर्ट गर्नुहोस्",
     file: "फाइल",
     new: "नयाँ",
@@ -67,9 +65,7 @@ const ne = {
       "के तपाईं पक्का स्टोरेज सफा गर्न चाहनुहुन्छ? यसले तपाईंको सबै डायग्राम र कस्टम टेम्पलेटहरू स्थायी रूपमा मेटाउँछ।",
     storage_flushed: "स्टोरेज सफा गरियो",
     help: "मद्दत",
-    shortcuts: "शॉर्टकटहरू",
-    ask_on_discord: "हामीलाई Discord मा सोध्नुहोस्",
-    feedback: "प्रतिक्रिया",
+    shortcuts: "शॉर्टकटहरू",    feedback: "प्रतिक्रिया",
     no_changes: "कुनै परिवर्तन छैन",
     loading: "लोड हुँदैछ...",
     last_saved: "अन्तिम सेभ गरिएको",

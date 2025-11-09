@@ -5,9 +5,7 @@ const hungarian = {
 };
 
 const hu = {
-  translation: {
-    report_bug: "Hiba jelentése",
-    import: "Importálás",
+  translation: {    import: "Importálás",
     import_from: "Importálás innen",
     file: "Fájl",
     new: "Új",
@@ -76,9 +74,7 @@ const hu = {
       "Biztosan üríti a tárhelyet? Ez véglegesen törölni fogja minden diagramját és egyedi sablonját.",
     storage_flushed: "A tárhely kiürítve",
     help: "Súgó",
-    shortcuts: "Gyorsbillentyűk",
-    ask_on_discord: "Érdeklődjön Discord-on",
-    feedback: "Visszajelzés",
+    shortcuts: "Gyorsbillentyűk",    feedback: "Visszajelzés",
     no_changes: "Nem volt módosítva",
     loading: "Betöltés...",
     last_saved: "Utoljára mentve:",

@@ -5,9 +5,7 @@ const vietnamese = {
 };
 
 const vi = {
-  translation: {
-    report_bug: "Báo cáo lỗi",
-    import_from: "Nhập từ",
+  translation: {    import_from: "Nhập từ",
     import: "Nhập",
     inherits: "Kế thừa",
     merging_column_w_inherited_definition:
@@ -79,9 +77,7 @@ const vi = {
       "Bạn có chắc chắn muốn xóa bộ nhớ không? Thao tác này sẽ xóa vĩnh viễn tất cả sơ đồ và mẫu tùy chỉnh của bạn.",
     storage_flushed: "Bộ nhớ đã được xóa",
     help: "Giúp đỡ",
-    shortcuts: "Phím tắt",
-    ask_on_discord: "Hỏi chúng tôi trên Discord",
-    feedback: "Nhận xét",
+    shortcuts: "Phím tắt",    feedback: "Nhận xét",
     no_changes: "Không thay đổi",
     loading: "Đang tải...",
     last_saved: "Đã lưu lần cuối",

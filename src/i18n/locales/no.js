@@ -5,9 +5,7 @@ const norwegian = {
 };
 
 const no = {
-  translation: {
-    report_bug: "Rapporter en feil",
-    import_from: "Importer",
+  translation: {    import_from: "Importer",
     import: "Importer",
     file: "Fil",
     new: "Ny",
@@ -74,9 +72,7 @@ const no = {
       "Er du sikker på at du vil tømme lagringen? Dette vil ugjenkallelig slette alle dine diagrammer og egendefinerte maler.",
     storage_flushed: "Lagring tømt",
     help: "Hjelp",
-    shortcuts: "Snarveier",
-    ask_on_discord: "Spør oss på Discord",
-    feedback: "Tilbakemelding",
+    shortcuts: "Snarveier",    feedback: "Tilbakemelding",
     no_changes: "Ingen endringer",
     loading: "Laster...",
     last_saved: "Sist lagret",

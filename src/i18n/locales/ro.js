@@ -5,9 +5,7 @@ const romanian = {
 };
 
 const ro = {
-  translation: {
-    report_bug: "Raportează o eroare",
-    import_from: "Import",
+  translation: {    import_from: "Import",
     import: "Import",
     file: "Fișier",
     new: "Nou",
@@ -74,9 +72,7 @@ const ro = {
       "Esti sigur că vrei să golesți depozitorea? Aceasta va șterge ireversibil toate diagramele și modelele personalizate.",
     storage_flushed: "Depozitorea a fost golită",
     help: "Ajutor",
-    shortcuts: "Scurtături",
-    ask_on_discord: "Întrebați-ne pe Discord",
-    feedback: "Feedback",
+    shortcuts: "Scurtături",    feedback: "Feedback",
     no_changes: "Nicio modificare",
     loading: "Se încarcă...",
     last_saved: "Ultima salvare",

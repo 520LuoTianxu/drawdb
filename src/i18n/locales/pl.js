@@ -5,9 +5,7 @@ const polish = {
 };
 
 const pl = {
-  translation: {
-    report_bug: "Zgłoś błąd",
-    import_from: "Importuj",
+  translation: {    import_from: "Importuj",
     import: "Importuj",
     file: "Plik",
     new: "Nowy",
@@ -74,9 +72,7 @@ const pl = {
       "Czy na pewno chcesz wyczyścić pamięć? To nieodwracalnie usunie wszystkie twoje diagramy i własne szablony.",
     storage_flushed: "Pamięć wyczyszczona",
     help: "Pomoc",
-    shortcuts: "Skróty",
-    ask_on_discord: "Zapytaj nas na Discordzie",
-    feedback: "Opinie",
+    shortcuts: "Skróty",    feedback: "Opinie",
     no_changes: "Brak zmian",
     loading: "Ładowanie...",
     last_saved: "Ostatnio zapisane",

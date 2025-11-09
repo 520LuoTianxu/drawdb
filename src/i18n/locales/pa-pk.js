@@ -5,9 +5,7 @@ const punjabipk = {
 };
 
 const pa_pk = {
-  translation: {
-    report_bug: "مسئلہ رپورٹ کرو",
-    import_from: "توں منگاؤ",
+  translation: {    import_from: "توں منگاؤ",
     import: "منگاؤ",
     file: "فائل",
     new: "نواں",
@@ -67,9 +65,7 @@ const pa_pk = {
       "تُسی پکا سٹوریج صاف کرنا چاہندے او؟ ایہہ تہاڈے سارے ڈایاگرام تے کسٹم ٹیمپلیٹ ہمیشہ لئی مٹا دے گا۔",
     storage_flushed: "سٹوریج صاف ہو گیا",
     help: "مدد",
-    shortcuts: "شارٹ کٹ",
-    ask_on_discord: "Discord تے پچھو",
-    feedback: "فیڈبیک",
+    shortcuts: "شارٹ کٹ",    feedback: "فیڈبیک",
     no_changes: "کوئی تبدیلی نہیں",
     loading: "لوڈ ہو رہیا اے...",
     last_saved: "آخری واری محفوظ کیتا",

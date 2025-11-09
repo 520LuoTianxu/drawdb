@@ -5,9 +5,7 @@ const uyghur = {
 };
 
 const ug = {
-  translation: {
-    report_bug: "بۇغ رېپورت قىلىڭ",
-    import_from: "ئېكىر",
+  translation: {    import_from: "ئېكىر",
     import: "ئېكىر",
     file: "ھۆججەت",
     new: "يېڭى",
@@ -67,9 +65,7 @@ const ug = {
       "سىز ھەقىقەتەن ساقلاشنى تازىلاشنى خالايمسىز؟ بۇ سىزنىڭ بارلىق رەسملەرنى ۋە خاس شablونلارنى قايتا قۇرغىلى بولمايدۇ.",
     storage_flushed: "ساقلاش تازىلاندى",
     help: "ياردەم",
-    shortcuts: "قىسقا يوللار",
-    ask_on_discord: "بىز بىلەن Discord دا سوراڭ",
-    feedback: "پىكىر",
+    shortcuts: "قىسقا يوللار",    feedback: "پىكىر",
     no_changes: "بىرەر ئۆزگىرىش يوق",
     loading: "يۈكلەش...",
     last_saved: "ئاخىرىدا ساقلانغان",

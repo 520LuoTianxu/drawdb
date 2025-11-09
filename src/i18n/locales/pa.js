@@ -5,9 +5,7 @@ const punjabi = {
 };
 
 const pa = {
-  translation: {
-    report_bug: "ਬੱਗ ਰਿਪੋਰਟ ਕਰੋ",
-    import_from: "ਇੰਪੋਰਟ ਕਰੋ",
+  translation: {    import_from: "ਇੰਪੋਰਟ ਕਰੋ",
     import: "ਇੰਪੋਰਟ ਕਰੋ",
     file: "ਫਾਈਲ",
     new: "ਨਵਾਂ",
@@ -67,9 +65,7 @@ const pa = {
       "ਕੀ ਤੁਸੀਂ ਸੱਚਮੁੱਚ ਸਟੋਰੇਜ ਨੂੰ ਸਾਫ਼ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ? ਇਹ ਤੁਹਾਡੇ ਸਾਰੇ ਡਾਯਾਗ੍ਰਾਮ ਅਤੇ ਕਸਟਮ ਟੈਂਪਲੇਟਾਂ ਨੂੰ ਅਟੱਲ ਤੌਰ 'ਤੇ ਹਟਾ ਦੇਵੇਗਾ।",
     storage_flushed: "ਸਟੋਰੇਜ ਸਾਫ਼ ਕੀਤਾ ਗਿਆ",
     help: "ਮਦਦ",
-    shortcuts: "ਸ਼ਾਰਟਕਟ",
-    ask_on_discord: "ਸਾਡੇ ਤੋਂ Discord 'ਤੇ ਪੁੱਛੋ",
-    feedback: "ਫੀਡਬੈਕ",
+    shortcuts: "ਸ਼ਾਰਟਕਟ",    feedback: "ਫੀਡਬੈਕ",
     no_changes: "ਕੋਈ ਬਦਲਾਅ ਨਹੀਂ",
     loading: "ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ...",
     last_saved: "ਆਖਰੀ ਵਾਰ ਸੇਵ ਕੀਤਾ",

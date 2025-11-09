@@ -5,9 +5,7 @@ const urdu = {
 };
 
 const ur = {
-  translation: {
-    report_bug: "بگ رپورٹ کریں",
-    import_from: "درآمد کریں",
+  translation: {    import_from: "درآمد کریں",
     import: "درآمد کریں",
     file: "فائل",
     new: "نیا",
@@ -67,9 +65,7 @@ const ur = {
       "کیا آپ واقعی اسٹوریج کو صاف کرنا چاہتے ہیں؟ یہ آپ کے تمام ڈایاگرام اور کسٹم ٹیمپلیٹس کو ناقابل واپسی طور پر حذف کر دے گا۔",
     storage_flushed: "اسٹوریج صاف کر دیا گیا",
     help: "مدد",
-    shortcuts: "شارٹ کٹس",
-    ask_on_discord: "Discord پر پوچھیں",
-    feedback: "فیڈبیک",
+    shortcuts: "شارٹ کٹس",    feedback: "فیڈبیک",
     no_changes: "کوئی تبدیلی نہیں",
     loading: "لوڈ ہو رہا ہے...",
     last_saved: "آخری بار محفوظ کیا گیا",

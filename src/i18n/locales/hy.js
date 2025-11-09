@@ -5,9 +5,7 @@ const armenian = {
 };
 
 const hy = {
-  translation: {
-    report_bug: "Զեկուցել սխալի մասին",
-    import_from: "Ներմուծել",
+  translation: {    import_from: "Ներմուծել",
     import: "Ներմուծել",
     file: "Ֆայլ",
     new: "Նոր",
@@ -74,9 +72,7 @@ const hy = {
       "Վստա՞հ եք, որ ցանկանում եք մաքրել պահոցը։ Սա անդառնալիորեն կհեռացնի ձեր բոլոր սխեմաներն ու ձևանմուշները։",
     storage_flushed: "Պահեստը դատարկված է",
     help: "Օգնություն",
-    shortcuts: "Դյուրանցումներ",
-    ask_on_discord: "Հարցնել Discord-ում",
-    feedback: "Հետադարձ կապ",
+    shortcuts: "Դյուրանցումներ",    feedback: "Հետադարձ կապ",
     no_changes: "Փոփոխություններ չկան",
     loading: "Բեռնվում է...",
     last_saved: "Վերջին պահպանումը",

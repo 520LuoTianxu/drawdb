@@ -5,9 +5,7 @@ const odia = {
 };
 
 const od = {
-  translation: {
-    report_bug: "ବଗ୍ ରିପୋର୍ଟ କରନ୍ତୁ",
-    import_from: "ଆମଦାନି",
+  translation: {    import_from: "ଆମଦାନି",
     import: "ଆମଦାନି",
     file: "ଫାଇଲ୍",
     new: "ନୂତନ",
@@ -66,9 +64,7 @@ const od = {
       "ଆପଣ ନିଶ୍ଚିତ ସ୍ଟୋରେଜ୍ ସଫା କରିବେ? ଏହା ସମସ୍ତ ଆପଣଙ୍କର ଡାୟାଗ୍ରାମ୍ ଏବଂ କଷ୍ଟମ୍ ଟେମ୍ପଲେଟ୍ ଅପରିବର୍ତ୍ତନୀୟ ଭାବରେ ହଟାଇଦେବ।",
     storage_flushed: "ସ୍ଟୋରେଜ୍ ସଫା ହୋଇଗଲା",
     help: "ସାହାଯ୍ୟ",
-    shortcuts: "ଶର୍ଟକଟ୍ସ",
-    ask_on_discord: "ଆମକୁ Discord ରେ ପଚାରନ୍ତୁ",
-    feedback: "ଫିଡବ୍ୟାକ୍",
+    shortcuts: "ଶର୍ଟକଟ୍ସ",    feedback: "ଫିଡବ୍ୟାକ୍",
     no_changes: "କୌଣସି ପରିବର୍ତ୍ତନ ନାହିଁ",
     loading: "ଲୋଡ୍ ହେଉଛି...",
     last_saved: "ଶେଷ ସେଭ୍",

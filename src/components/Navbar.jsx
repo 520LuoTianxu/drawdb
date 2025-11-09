@@ -64,15 +64,6 @@ export default function Navbar() {
             >
               <i className="opacity-70 bi bi-twitter-x" />
             </a>
-            <a
-              title="Join the community on Discord"
-              className="px-2 py-2 hover:opacity-60 transition-all duration-300 rounded-full text-2xl"
-              href={socials.discord}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <i className="opacity-70 bi bi-discord" />
-            </a>
           </div>
         </div>
         <button

@@ -5,9 +5,7 @@ const czech = {
 };
 
 const cz = {
-  translation: {
-    report_bug: "Nahlásit chybu",
-    import: "Importovat",
+  translation: {    import: "Importovat",
     import_from: "Importovat z",
     file: "Soubor",
     new: "Nový",
@@ -75,9 +73,7 @@ const cz = {
       "Jste si jisti, že chcete úložiště propláchnout? Tím se nenávratně odstraní všechny vaše diagramy a vlastní šablony.",
     storage_flushed: "Úložiště propláchnuto",
     help: "Pomoc",
-    shortcuts: "Zkratky",
-    ask_on_discord: "Zeptejte se nás na Discord",
-    feedback: "Zpětná vazba",
+    shortcuts: "Zkratky",    feedback: "Zpětná vazba",
     no_changes: "Žádné změny",
     loading: "Načítání...",
     last_saved: "Naposledy uloženo",

@@ -5,9 +5,7 @@ const persian = {
 };
 
 const fa = {
-  translation: {
-    report_bug: "گزارش خطا",
-    import_from: "وارد کردن",
+  translation: {    import_from: "وارد کردن",
     import: "وارد کردن",
     file: "فایل",
     new: "جدید",
@@ -67,9 +65,7 @@ const fa = {
       "آیا مطمئن هستید که می‌خواهید حافظه را پاک کنید؟ این عمل تمام نمودارها و الگوهای سفارشی شما را به طور غیر قابل برگشت حذف می‌کند.",
     storage_flushed: "حافظه پاک شد",
     help: "راهنما",
-    shortcuts: "میانبرها",
-    ask_on_discord: "پرسیدن در Discord",
-    feedback: "بازخورد",
+    shortcuts: "میانبرها",    feedback: "بازخورد",
     no_changes: "بدون تغییرات",
     loading: "در حال بارگذاری...",
     last_saved: "آخرین ذخیره",

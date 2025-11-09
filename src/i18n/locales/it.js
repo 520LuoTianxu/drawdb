@@ -5,9 +5,7 @@ const italian = {
 };
 
 const it = {
-  translation: {
-    report_bug: "Segnalare un bug",
-    import_from: "Importa",
+  translation: {    import_from: "Importa",
     import: "Importa",
     file: "File",
     new: "Nuovo",
@@ -76,9 +74,7 @@ const it = {
       "Sei sicuro di voler eseguire la pulizia? L'operazione è irreversibile.",
     storage_flushed: "Pulizia eseguita!",
     help: "Aiuto",
-    shortcuts: "Scorciatoie",
-    ask_on_discord: "Contattaci su Discord",
-    feedback: "Feedback",
+    shortcuts: "Scorciatoie",    feedback: "Feedback",
     no_changes: "Nessun cambio",
     loading: "Caricamento in corso…",
     last_saved: "Ultimo salvataggio",

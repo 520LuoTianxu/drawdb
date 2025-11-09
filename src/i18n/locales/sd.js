@@ -5,9 +5,7 @@ const sindhi = {
 };
 
 const sd = {
-  translation: {
-    report_bug: "بگ رپورٽ ڪريو",
-    import: "درآمد ڪريو",
+  translation: {    import: "درآمد ڪريو",
     inherits: "وارثت ۾ حاصل ٿيل",
     merging_column_w_inherited_definition:
       "ٽيبل '{{tableName}}' ۾ '{{fieldName}}' ڪالم وارثت ۾ ملندڙ تعريف سان ضم ڪيو ويندو",
@@ -81,9 +79,7 @@ const sd = {
       "ڇا توهان واقعي اسٽوريج صاف ڪرڻ چاهيو ٿا؟ هي توهان جا سڀ ڊاياگرام ۽ ڪسٽم ٽيمپليٽس مستقل طور ختم ڪري ڇڏيندو.",
     storage_flushed: "اسٽوريج صاف ٿي وئي",
     help: "مدد",
-    shortcuts: "شارٽ ڪٽس",
-    ask_on_discord: "ڊسڪارڊ تي پڇو",
-    feedback: "راءِ",
+    shortcuts: "شارٽ ڪٽس",    feedback: "راءِ",
     no_changes: "ڪو تبديلي ناهي",
     loading: "لوڊ ٿي رهيو آهي...",
     last_saved: "آخري محفوظ",

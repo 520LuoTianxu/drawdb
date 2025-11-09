@@ -5,9 +5,7 @@ const traditionalChinese = {
 };
 
 const zh_tw = {
-  translation: {
-    report_bug: "回報問題",
-    import: "匯入",
+  translation: {    import: "匯入",
     inherits: "繼承",
     merging_column_w_inherited_definition:
       "資料表「{{tableName}}」中的欄位「{{fieldName}}」帶有繼承定義，系統會合併。",
@@ -81,9 +79,7 @@ const zh_tw = {
       "確定要清除儲存空間嗎？這將會永久刪除所有圖表和自訂範本。",
     storage_flushed: "儲存空間已清除",
     help: "說明",
-    shortcuts: "快速鍵",
-    ask_on_discord: "到 Discord 提問",
-    feedback: "意見回饋",
+    shortcuts: "快速鍵",    feedback: "意見回饋",
     no_changes: "無變更",
     loading: "載入中...",
     last_saved: "上次儲存時間",

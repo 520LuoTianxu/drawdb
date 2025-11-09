@@ -5,9 +5,7 @@ const chinese = {
 };
 
 const zh = {
-  translation: {
-    report_bug: "报告问题",
-    import_from: "导入",
+  translation: {    import_from: "导入",
     import: "导入",
     file: "文件",
     new: "新建",
@@ -78,9 +76,7 @@ const zh = {
     storage_flushed: "存储已清空",
     help: "帮助",
     docs: "文档",
-    shortcuts: "快捷键",
-    ask_on_discord: "在 Discord 联系我们",
-    feedback: "反馈",
+    shortcuts: "快捷键",    feedback: "反馈",
     no_changes: "没有更改",
     loading: "加载中...",
     last_saved: "上次保存",

@@ -5,9 +5,7 @@ const korean = {
 };
 
 const ko = {
-  translation: {
-    report_bug: "문제 보고",
-    import_from: "가져오기",
+  translation: {    import_from: "가져오기",
     import: "가져오기",
     file: "파일",
     new: "새로 만들기",
@@ -74,9 +72,7 @@ const ko = {
       "저장소를 비우시겠습니까? 이 작업은 되돌릴 수 없으며 모든 다이어그램과 사용자 정의 템플릿이 삭제됩니다.",
     storage_flushed: "저장소가 비워졌습니다",
     help: "도움말",
-    shortcuts: "단축키",
-    ask_on_discord: "디스코드에서 문의하기",
-    feedback: "피드백",
+    shortcuts: "단축키",    feedback: "피드백",
     no_changes: "변경 사항 없음",
     loading: "로딩 중...",
     last_saved: "마지막 저장",

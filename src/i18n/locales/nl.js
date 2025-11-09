@@ -5,9 +5,7 @@ const dutch = {
 };
 
 const nl = {
-  translation: {
-    report_bug: "Meld een bug",
-    import: "Importeren",
+  translation: {    import: "Importeren",
     inherits: "Erft van",
     merging_column_w_inherited_definition:
       "Kolom '{{fieldName}}' in tabel '{{tableName}}' met overgeërfde definitie zal worden samengevoegd",
@@ -81,9 +79,7 @@ const nl = {
       "Weet u zeker dat u de opslag wilt legen? Dit zal onomkeerbaar al uw diagrammen en aangepaste sjablonen verwijderen.",
     storage_flushed: "Opslag geleegd",
     help: "Help",
-    shortcuts: "Sneltoetsen",
-    ask_on_discord: "Vraag het ons op Discord",
-    feedback: "Feedback",
+    shortcuts: "Sneltoetsen",    feedback: "Feedback",
     no_changes: "Geen wijzigingen",
     loading: "Laden...",
     last_saved: "Laatst opgeslagen",
