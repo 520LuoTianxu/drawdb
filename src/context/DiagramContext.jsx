@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Action, DB, ObjectType, defaultBlue } from "../data/constants";
+import { Action, DB, ObjectType, defaultBlue, tableWidth } from "../data/constants";
 import { useTransform, useUndoRedo, useSelect } from "../hooks";
 import { Toast } from "@douyinfe/semi-ui";
 import { useTranslation } from "react-i18next";
@@ -7,6 +7,14 @@ import { nanoid } from "nanoid";
 
 export const DiagramContext = createContext(null);
 
+/**
+ * DiagramContextProvider
+ *
+ * 参数: { children }            // React 子元素
+ * 返回: JSX.Element             // 上下文提供组件
+ * 说明: 提供绘图所需的上下文，包括表、关系、撤销重做等。
+ * 异常: 组件初始化一般不抛错，如出现异常将记录日志。
+ */
 export default function DiagramContextProvider({ children }) {
   const { t } = useTranslation();
   const [database, setDatabase] = useState(DB.GENERIC);
@@ -16,52 +24,70 @@ export default function DiagramContextProvider({ children }) {
   const { setUndoStack, setRedoStack } = useUndoRedo();
   const { selectedElement, setSelectedElement } = useSelect();
 
+  /**
+   * addTable
+   *
+   * 参数: data?                   // 可选，撤销/重做用的插入位置与表数据
+   *       addToHistory? = true    // 是否加入撤销栈
+   * 返回: void                    // 无返回值
+   * 说明: 新增一张表，并为其设置独立的默认宽度 `tableWidth`。
+   * 异常: 捕获并记录新增过程中的异常，提示用户失败信息。
+   */
   const addTable = (data, addToHistory = true) => {
-    const id = nanoid();
-    const newTable = {
-      id,
-      name: `table_${id}`,
-      x: transform.pan.x,
-      y: transform.pan.y,
-      locked: false,
-      fields: [
-        {
-          name: "id",
-          type: database === DB.GENERIC ? "INT" : "INTEGER",
-          default: "",
-          check: "",
-          primary: true,
-          unique: true,
-          notNull: true,
-          increment: true,
-          comment: "",
-          id: nanoid(),
-        },
-      ],
-      comment: "",
-      indices: [],
-      color: defaultBlue,
-    };
-    if (data) {
-      setTables((prev) => {
-        const temp = prev.slice();
-        temp.splice(data.index, 0, data.table);
-        return temp;
-      });
-    } else {
-      setTables((prev) => [...prev, newTable]);
-    }
-    if (addToHistory) {
-      setUndoStack((prev) => [
-        ...prev,
-        {
-          data: data || { table: newTable, index: tables.length - 1 },
-          action: Action.ADD,
-          element: ObjectType.TABLE,
-          message: t("add_table"),
-        },
-      ]);
-      setRedoStack([]);
+    try {
+      const id = nanoid();
+      const newTable = {
+        id,
+        name: `table_${id}`,
+        x: transform.pan.x,
+        y: transform.pan.y,
+        width: tableWidth, // 为新表设置默认独立宽度
+        locked: false,
+        fields: [
+          {
+            name: "id",
+            type: database === DB.GENERIC ? "INT" : "INTEGER",
+            default: "",
+            check: "",
+            primary: true,
+            unique: true,
+            notNull: true,
+            increment: true,
+            comment: "",
+            id: nanoid(),
+          },
+        ],
+        comment: "",
+        indices: [],
+        color: defaultBlue,
+      };
+      // 基本日志记录
+      console.info(`[Diagram] addTable: id=${id}, width=${newTable.width}`);
+
+      if (data) {
+        setTables((prev) => {
+          const temp = prev.slice();
+          temp.splice(data.index, 0, data.table);
+          return temp;
+        });
+      } else {
+        setTables((prev) => [...prev, newTable]);
+      }
+      if (addToHistory) {
+        setUndoStack((prev) => [
+          ...prev,
+          {
+            data: data || { table: newTable, index: tables.length - 1 },
+            action: Action.ADD,
+            element: ObjectType.TABLE,
+            message: t("add_table"),
+          },
+        ]);
+        setRedoStack([]);
+      }
+    } catch (e) {
+      console.error("[Diagram] addTable failed:", e);
+      Toast.error(t("operation_failed"));
     }
   };
 

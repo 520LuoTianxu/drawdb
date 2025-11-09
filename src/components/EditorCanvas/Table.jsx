@@ -6,6 +6,7 @@ import {
   tableFieldHeight,
   tableHeaderHeight,
   tableColorStripHeight,
+  tableWidth,
 } from "../../data/constants";
 import {
   IconEdit,
@@ -54,7 +55,7 @@ export default function Table({
   const { database } = useDiagram();
   const { layout } = useLayout();
   const { deleteTable, deleteField, updateTable } = useDiagram();
-  const { settings, setSettings } = useSettings();
+  const { settings } = useSettings();
   const { t } = useTranslation();
   const { setUndoStack, setRedoStack } = useUndoRedo();
   const { transform } = useTransform();
@@ -158,7 +159,7 @@ export default function Table({
         key={tableData.id}
         x={tableData.x}
         y={tableData.y}
-        width={settings.tableWidth}
+        width={tableData.width ?? tableWidth}
         height={height}
         className="group drop-shadow-lg rounded-md cursor-move"
         onPointerDown={onPointerDown}
@@ -377,7 +378,7 @@ export default function Table({
               onPointerDown={(e) => {
                 try {
                   e.stopPropagation();
-                  initialWidthRef.current = settings.tableWidth;
+                  initialWidthRef.current = tableData.width ?? tableWidth;
                   initialXRef.current = tableData.x;
                   setResizing(true);
                   console.debug("[Table] 左侧拖动开始", {
@@ -392,7 +393,7 @@ export default function Table({
               onPointerMove={(e) => {
                 if (!resizing) return;
                 const delta = e.movementX / (transform?.zoom || 1);
-                const currentWidth = settings.tableWidth;
+                const currentWidth = tableData.width ?? tableWidth;
                 const MIN_TABLE_WIDTH = 180;
                 let proposedWidth = currentWidth - delta;
                 let proposedX = tableData.x + delta;
@@ -401,12 +402,8 @@ export default function Table({
                   proposedWidth = MIN_TABLE_WIDTH;
                   proposedX = tableData.x + clampDelta;
                 }
-                if (
-                  proposedWidth !== settings.tableWidth ||
-                  proposedX !== tableData.x
-                ) {
-                  setSettings((prev) => ({ ...prev, tableWidth: proposedWidth }));
-                  updateTable(tableData.id, { x: proposedX });
+                if (proposedWidth !== currentWidth || proposedX !== tableData.x) {
+                  updateTable(tableData.id, { width: proposedWidth, x: proposedX });
                 }
               }}
               onPointerUp={(e) => {
@@ -414,7 +411,10 @@ export default function Table({
                 setResizing(false);
                 e.stopPropagation();
                 const MIN_TABLE_WIDTH = 180;
-                const finalWidth = Math.max(MIN_TABLE_WIDTH, settings.tableWidth);
+                const finalWidth = Math.max(
+                  MIN_TABLE_WIDTH,
+                  tableData.width ?? tableWidth,
+                );
                 const finalX = tableData.x;
                 const startWidth = initialWidthRef.current;
                 const startX = initialXRef.current;
@@ -449,7 +449,7 @@ export default function Table({
           {/** 右侧小蓝点：仅调整width */}
           {(showResizers || resizing) && (
             <circle
-              cx={tableData.x + settings.tableWidth}
+              cx={tableData.x + (tableData.width ?? tableWidth)}
               cy={tableData.y + height / 2}
               r={4}
               fill={settings.mode === "light" ? "#3B82F6" : "#60A5FA"}
@@ -460,7 +460,7 @@ export default function Table({
               onPointerDown={(e) => {
                 try {
                   e.stopPropagation();
-                  initialWidthRef.current = settings.tableWidth;
+                  initialWidthRef.current = tableData.width ?? tableWidth;
                   setResizing(true);
                   console.debug("[Table] 右侧拖动开始", {
                     width: initialWidthRef.current,
@@ -474,9 +474,10 @@ export default function Table({
                 if (!resizing) return;
                 const delta = e.movementX / (transform?.zoom || 1);
                 const MIN_TABLE_WIDTH = 180;
-                const next = Math.max(MIN_TABLE_WIDTH, settings.tableWidth + delta);
-                if (next !== settings.tableWidth) {
-                  setSettings((prev) => ({ ...prev, tableWidth: next }));
+                const currentWidth = tableData.width ?? tableWidth;
+                const next = Math.max(MIN_TABLE_WIDTH, currentWidth + delta);
+                if (next !== currentWidth) {
+                  updateTable(tableData.id, { width: next });
                 }
               }}
               onPointerUp={(e) => {
@@ -484,7 +485,10 @@ export default function Table({
                 setResizing(false);
                 e.stopPropagation();
                 const MIN_TABLE_WIDTH = 180;
-                const finalWidth = Math.max(MIN_TABLE_WIDTH, settings.tableWidth);
+                const finalWidth = Math.max(
+                  MIN_TABLE_WIDTH,
+                  tableData.width ?? tableWidth,
+                );
                 const startWidth = initialWidthRef.current;
                 console.debug("[Table] 右侧拖动结束", {
                   startWidth,

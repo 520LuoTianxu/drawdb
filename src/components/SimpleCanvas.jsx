@@ -21,7 +21,7 @@ function Table({ table, grab }) {
       key={table.name}
       x={table.x}
       y={table.y}
-      width={tableWidth}
+      width={table.width ?? tableWidth}
       height={height}
       className="drop-shadow-lg rounded-md cursor-move"
       onPointerDown={(e) => {
@@ -131,6 +131,9 @@ function Relationship({ relationship, tables }) {
             x: tables[relationship.endTableId].x,
             y: tables[relationship.endTableId].y,
           },
+        }, {
+          startWidth: tables[relationship.startTableId].width ?? tableWidth,
+          endWidth: tables[relationship.endTableId].width ?? tableWidth,
         })}
         stroke="gray"
         fill="none"

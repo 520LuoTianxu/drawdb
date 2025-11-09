@@ -15,6 +15,12 @@ export default function Relationship({ data }) {
   const { selectedElement, setSelectedElement } = useSelect();
   const { t } = useTranslation();
 
+  /**
+   * 计算路径所需的参数
+   * 参数: 无（依赖当前关系与表集合）
+   * 返回: {startFieldIndex,endFieldIndex,startTable,endTable,startWidth,endWidth}
+   * 异常: 若找不到表则返回 null。
+   */
   const pathValues = useMemo(() => {
     const startTable = tables.find((t) => t.id === data.startTableId);
     const endTable = tables.find((t) => t.id === data.endTableId);
@@ -28,8 +34,10 @@ export default function Relationship({ data }) {
       endFieldIndex: endTable.fields.findIndex((f) => f.id === data.endFieldId),
       startTable: { x: startTable.x, y: startTable.y },
       endTable: { x: endTable.x, y: endTable.y },
+      startWidth: startTable.width ?? settings.tableWidth,
+      endWidth: endTable.width ?? settings.tableWidth,
     };
-  }, [tables, data]);
+  }, [tables, data, settings.tableWidth]);
 
   const pathRef = useRef();
   const labelRef = useRef();
@@ -125,7 +133,10 @@ export default function Relationship({ data }) {
       <g className="select-none group" onDoubleClick={edit} onClick={handleClick}>
         {/* invisible wider path for better hover ux */}
         <path
-          d={calcPath(pathValues, settings.tableWidth)}
+          d={calcPath(pathValues, {
+            startWidth: pathValues?.startWidth ?? settings.tableWidth,
+            endWidth: pathValues?.endWidth ?? settings.tableWidth,
+          })}
           fill="none"
           stroke="transparent"
           strokeWidth={12}
@@ -133,7 +144,10 @@ export default function Relationship({ data }) {
         />
         <path
           ref={pathRef}
-          d={calcPath(pathValues, settings.tableWidth)}
+          d={calcPath(pathValues, {
+            startWidth: pathValues?.startWidth ?? settings.tableWidth,
+            endWidth: pathValues?.endWidth ?? settings.tableWidth,
+          })}
           className="relationship-path"
           fill="none"
           cursor="pointer"

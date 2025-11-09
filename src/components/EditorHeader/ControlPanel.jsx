@@ -252,13 +252,24 @@ export default function ControlPanel({
         } else if (a.component === "self") {
           updateTable(a.tid, a.undo);
         } else if (a.component === "resize") {
-          // 撤销表宽度调整：恢复全局宽度与（如果提供）当前表的x
+          /**
+           * 撤销表宽度调整
+           * 参数: 无（使用撤销栈项 a）
+           * 返回: void
+           * 说明: 按表恢复 width 与可选的 x 坐标，不再使用全局 settings.tableWidth。
+           * 异常: 捕获并记录异常，以免中断撤销流程。
+           */
           try {
+            const updates = {};
             if (typeof a.undo?.width === "number") {
-              setSettings((prev) => ({ ...prev, tableWidth: a.undo.width }));
+              updates.width = a.undo.width;
             }
             if (typeof a.undo?.x === "number") {
-              updateTable(a.tid, { x: a.undo.x });
+              updates.x = a.undo.x;
+            }
+            if (Object.keys(updates).length > 0) {
+              console.debug("[ControlPanel] 撤销 resize", { tid: a.tid, updates });
+              updateTable(a.tid, updates);
             }
           } catch (err) {
             console.error("[ControlPanel] 撤销表宽度调整异常", err);
@@ -442,13 +453,24 @@ export default function ControlPanel({
         } else if (a.component === "self") {
           updateTable(a.tid, a.redo, false);
         } else if (a.component === "resize") {
-          // 重做表宽度调整：应用全局宽度与（如果提供）当前表的x
+          /**
+           * 重做表宽度调整
+           * 参数: 无（使用重做栈项 a）
+           * 返回: void
+           * 说明: 按表应用 width 与可选的 x 坐标，不再使用全局 settings.tableWidth。
+           * 异常: 捕获并记录异常，以免中断重做流程。
+           */
           try {
+            const updates = {};
             if (typeof a.redo?.width === "number") {
-              setSettings((prev) => ({ ...prev, tableWidth: a.redo.width }));
+              updates.width = a.redo.width;
             }
             if (typeof a.redo?.x === "number") {
-              updateTable(a.tid, { x: a.redo.x });
+              updates.x = a.redo.x;
+            }
+            if (Object.keys(updates).length > 0) {
+              console.debug("[ControlPanel] 重做 resize", { tid: a.tid, updates });
+              updateTable(a.tid, updates);
             }
           } catch (err) {
             console.error("[ControlPanel] 重做表宽度调整异常", err);
