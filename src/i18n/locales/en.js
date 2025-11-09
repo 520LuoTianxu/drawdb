@@ -5,7 +5,8 @@ const english = {
 };
 
 const en = {
-  translation: {    import: "Import",
+  translation: {
+    import: "Import",
     inherits: "Inherits",
     merging_column_w_inherited_definition:
       "Column '{{fieldName}}' in table '{{tableName}}' with inherited definition will be merged",
@@ -80,7 +81,8 @@ const en = {
       "Are you sure you want to flush the storage? This will irreversibly delete all your diagrams and custom templates.",
     storage_flushed: "Storage flushed",
     help: "Help",
-    shortcuts: "Shortcuts",    feedback: "Feedback",
+    shortcuts: "Shortcuts",
+    feedback: "Feedback",
     no_changes: "No changes",
     loading: "Loading...",
     last_saved: "Last saved",
@@ -258,24 +260,7 @@ const en = {
     tab_view: "Tab view",
     label: "Label",
     many_side_label: "Many(n) side label",
-    version: "Version",
-    versions: "Versions",
-    no_saved_versions: "No saved versions",
-    record_version: "Record version",
-    commited_at: "Commited at",
     read_only: "Read only",
-    continue: "Continue",
-    restore_version: "Restore version",
-    restore_warning: "Loading another version will overwrite any changes.",
-    return_to_current: "Return to diagram",
-    no_changes_to_record: "No changes to record",
-    click_to_view: "Click to view",
-    load_more: "Load more",
-    clear_cache: "Clear cache",
-    cache_cleared: "Cache cleared",
-    failed_to_record_version: "Failed to record version",
-    failed_to_load_diagram: "Failed to load diagram",
-    see_all: "See all",
   },
 };
 

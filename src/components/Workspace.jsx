@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, createContext } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ControlPanel from "./EditorHeader/ControlPanel";
 import Canvas from "./EditorCanvas/Canvas";
 import { CanvasContextProvider } from "../context/CanvasContext";
@@ -18,31 +18,23 @@ import {
   useEnums,
 } from "../hooks";
 import FloatingControls from "./FloatingControls";
-import { Button, Modal, Tag } from "@douyinfe/semi-ui";
-import { IconAlertTriangle } from "@douyinfe/semi-icons";
+import { Modal, Tag } from "@douyinfe/semi-ui";
 import { useTranslation } from "react-i18next";
 import { databases } from "../data/databases";
 import { isRtl } from "../i18n/utils/rtl";
 import { db } from "../data/db";
 
-export const IdContext = createContext({
-  version: "",
-  setVersion: () => {},
-});
-
 const SIDEPANEL_MIN_WIDTH = 384;
 
 export default function WorkSpace() {
   const [id, setId] = useState(0);
-  const [version, setVersion] = useState("");
   const [title, setTitle] = useState("Untitled Diagram");
   const [resize, setResize] = useState(false);
   const [width, setWidth] = useState(SIDEPANEL_MIN_WIDTH);
   const [lastSaved, setLastSaved] = useState("");
   const [showSelectDbModal, setShowSelectDbModal] = useState(false);
-  const [showRestoreModal, setShowRestoreModal] = useState(false);
   const [selectedDb, setSelectedDb] = useState("");
-  const { layout, setLayout } = useLayout();
+  const { layout } = useLayout();
   const { settings } = useSettings();
   const { types, setTypes } = useTypes();
   const { areas, setAreas } = useAreas();
@@ -306,12 +298,6 @@ export default function WorkSpace() {
     setSaveState,
   ]);
 
-  const returnToCurrentDiagram = async () => {
-    await load();
-    setLayout((prev) => ({ ...prev, readOnly: false }));
-    setVersion(null);
-  };
-
   useEffect(() => {
     if (
       tables?.length === 0 &&
@@ -356,16 +342,14 @@ export default function WorkSpace() {
 
   return (
     <div className="h-full flex flex-col overflow-hidden theme">
-      <IdContext.Provider value={{ version, setVersion }}>
-        <ControlPanel
-          diagramId={id}
-          setDiagramId={setId}
-          title={title}
-          setTitle={setTitle}
-          lastSaved={lastSaved}
-          setLastSaved={setLastSaved}
-        />
-      </IdContext.Provider>
+      <ControlPanel
+        diagramId={id}
+        setDiagramId={setId}
+        title={title}
+        setTitle={setTitle}
+        lastSaved={lastSaved}
+        setLastSaved={setLastSaved}
+      />
       <div
         className="flex h-full overflow-y-auto"
         onPointerUp={(e) => e.isPrimary && setResize(false)}
@@ -385,23 +369,6 @@ export default function WorkSpace() {
           <CanvasContextProvider className="h-full w-full">
             <Canvas saveState={saveState} setSaveState={setSaveState} />
           </CanvasContextProvider>
-          {version && (
-            <div className="absolute right-8 top-2 space-x-2">
-              <Button
-                icon={<i className="fa-solid fa-rotate-right mt-0.5"></i>}
-                onClick={() => setShowRestoreModal(true)}
-              >
-                {t("restore_version")}
-              </Button>
-              <Button
-                type="tertiary"
-                onClick={returnToCurrentDiagram}
-                icon={<i className="bi bi-arrow-return-right mt-1"></i>}
-              >
-                {t("return_to_current")}
-              </Button>
-            </div>
-          )}
           {!(layout.sidebar || layout.toolbar || layout.header) && (
             <div className="fixed right-5 bottom-4">
               <FloatingControls />
@@ -457,27 +424,6 @@ export default function WorkSpace() {
             </div>
           ))}
         </div>
-      </Modal>
-      <Modal
-        visible={showRestoreModal}
-        centered
-        closable
-        onCancel={() => setShowRestoreModal(false)}
-        title={
-          <span className="flex items-center gap-2">
-            <IconAlertTriangle className="text-amber-400" size="extra-large" />{" "}
-            {t("restore_version")}
-          </span>
-        }
-        okText={t("continue")}
-        cancelText={t("cancel")}
-        onOk={() => {
-          setLayout((prev) => ({ ...prev, readOnly: false }));
-          setShowRestoreModal(false);
-          setVersion(null);
-        }}
-      >
-        {t("restore_warning")}
       </Modal>
     </div>
   );

@@ -5,7 +5,8 @@ const chinese = {
 };
 
 const zh = {
-  translation: {    import_from: "导入",
+  translation: {
+    import_from: "导入",
     import: "导入",
     file: "文件",
     new: "新建",
@@ -76,7 +77,8 @@ const zh = {
     storage_flushed: "存储已清空",
     help: "帮助",
     docs: "文档",
-    shortcuts: "快捷键",    feedback: "反馈",
+    shortcuts: "快捷键",
+    feedback: "反馈",
     no_changes: "没有更改",
     loading: "加载中...",
     last_saved: "上次保存",
@@ -247,24 +249,7 @@ const zh = {
     tab_view: "标签视图",
     label: "标签",
     many_side_label: "多(n)侧标签",
-    version: "版本",
-    versions: "版本列表",
-    no_saved_versions: "暂无保存记录",
-    record_version: "记录版本",
-    commited_at: "提交于",
     read_only: "只读",
-    continue: "继续",
-    restore_version: "还原版本",
-    restore_warning: "还原版本会覆盖所有更改。",
-    return_to_current: "返回当前图表",
-    no_changes_to_record: "没有可记录的变更",
-    click_to_view: "点击查看",
-    load_more: "加载更多",
-    clear_cache: "清除版本",
-    cache_cleared: "版本已清除",
-    failed_to_record_version: "记录版本失败",
-    failed_to_load_diagram: "加载图表失败",
-    see_all: "查看全部",
     snap_to_grid: "对齐网格线",
   },
 };

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   IconCaretdown,
   IconChevronRight,
@@ -77,7 +77,6 @@ import { databases } from "../../data/databases";
 import { jsonToMermaid } from "../../utils/exportAs/mermaid";
 import { isRtl } from "../../i18n/utils/rtl";
 import { jsonToDocumentation } from "../../utils/exportAs/documentation";
-import { IdContext } from "../Workspace";
 import { socials } from "../../data/socials";
 import { toDBML } from "../../utils/exportAs/dbml";
 import { exportSavedData } from "../../utils/exportSavedData";
@@ -130,7 +129,6 @@ export default function ControlPanel({
   const { selectedElement, setSelectedElement } = useSelect();
   const { transform, setTransform } = useTransform();
   const { t, i18n } = useTranslation();
-  const { version } = useContext(IdContext);
   const navigate = useNavigate();
 
   const invertLayout = (component) =>
@@ -1566,8 +1564,6 @@ export default function ControlPanel({
       />
       <Sidesheet
         type={sidesheet}
-        title={title}
-        setTitle={setTitle}
         onClose={() => setSidesheet(SIDESHEET.NONE)}
       />
     </>
@@ -1712,14 +1708,6 @@ export default function ControlPanel({
               <IconSaveStroked size="extra-large" />
             </button>
           </Tooltip>
-          <Tooltip content={t("versions")} position="bottom">
-            <button
-              className="py-1 px-2 hover-2 rounded-sm text-xl -mt-0.5"
-              onClick={() => setSidesheet(SIDESHEET.VERSIONS)}
-            >
-              <i className="fa-solid fa-code-branch" />{" "}
-            </button>
-          </Tooltip>
           <Tooltip content={t("to_do")} position="bottom">
             <button
               className="py-1 px-2 hover-2 rounded-sm text-xl -mt-0.5"
@@ -1821,11 +1809,6 @@ export default function ControlPanel({
                     ? "Templates/"
                     : "Diagrams/") + title}
                 </span>
-                {version && (
-                  <Tag className="mt-1" color="blue" size="small">
-                    {version.substring(0, 7)}
-                  </Tag>
-                )}
               </div>
               {(showEditName || modal === MODAL.RENAME) && !layout.readOnly && (
                 <IconEdit />
