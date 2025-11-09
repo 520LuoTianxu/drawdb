@@ -65,11 +65,11 @@ export function calcPath(r, tableWidthOrWidths = 200, zoom = 1) {
     } else if (x2 <= x1 + widthStart && x1 <= x2) {
       return `M ${x1 + widthStart} ${y1} L ${
         x2 + widthEnd
-      } ${y1} A ${radius} ${radius} 0 0 1 ${x2 + width + radius} ${
+      } ${y1} A ${radius} ${radius} 0 0 1 ${x2 + widthEnd + radius} ${
         y1 + radius
-      } L ${x2 + width + radius} ${y2 - radius} A ${radius} ${radius} 0 0 1 ${
+      } L ${x2 + widthEnd + radius} ${y2 - radius} A ${radius} ${radius} 0 0 1 ${
         x2 + widthEnd
-      } ${y2} L ${x2 + width} ${y2}`;
+      } ${y2} L ${x2 + widthEnd} ${y2}`;
     } else if (x2 + widthEnd >= x1 && x2 + widthEnd <= x1 + widthStart) {
       return `M ${x1} ${y1} L ${
         x2 - radius
@@ -107,12 +107,14 @@ export function calcPath(r, tableWidthOrWidths = 200, zoom = 1) {
       } ${y2} L ${endX} ${y2}`;
     } else if (x1 >= x2 && x1 <= x2 + widthEnd) {
       return `M ${x1 + widthStart} ${y1} L ${
-        x1 + width + radius
-      } ${y1} A ${radius} ${radius} 0 0 0 ${x1 + width + radius + radius} ${
+        x1 + widthStart + radius
+      } ${y1} A ${radius} ${radius} 0 0 0 ${
+        x1 + widthStart + radius + radius
+      } ${
         y1 - radius
-      } L ${x1 + width + radius + radius} ${
+      } L ${x1 + widthStart + radius + radius} ${
         y2 + radius
-      } A ${radius} ${radius} 0 0 0 ${x1 + width + radius} ${y2} L ${
+      } A ${radius} ${radius} 0 0 0 ${x1 + widthStart + radius} ${y2} L ${
         x2 + widthEnd
       } ${y2}`;
     } else {
