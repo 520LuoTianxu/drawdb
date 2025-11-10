@@ -65,3 +65,25 @@ docker run -p 3000:80 drawdb
 ```
 
 If you want to enable sharing, set up the [server](https://github.com/drawdb-io/drawdb-server) and environment variables according to `.env.sample`. This is optional unless you need to share files..
+## 服务器构建与部署说明
+
+为避免构建阶段出现“JavaScript heap out of memory”错误，已做以下调整：
+
+- 已移除 desktop/nw 相关依赖，仅保留 Web 构建。
+- 在 `vite.config.js` 中增加 `manualChunks`，将大依赖拆分，降低单文件体积。
+- 使用 `terser` 压缩器，构建时更稳定。
+- 构建脚本增加 Node 内存：`node --max-old-space-size=4096`。
+
+### 本地构建
+
+```
+npm install
+npm run build
+```
+
+### 测试
+
+```
+npm run test
+npm run test:ci
+```
